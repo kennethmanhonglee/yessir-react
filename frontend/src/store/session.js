@@ -53,6 +53,14 @@ export const signup_thunk = (user) => async (dispatch) => {
     return response;
 };
 
+export const logout_thunk = () => async (dispatch) => {
+    const response = await csrfFetch('/api/session', {
+        method: 'DELETE',
+    });
+    dispatch(removeUser_actionCreator());
+    return response;
+};
+
 const initialState = { user: null };
 
 const sessionReducer = (state = initialState, action) => {
