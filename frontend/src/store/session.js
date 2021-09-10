@@ -31,6 +31,13 @@ export const login_thunk = (user) => async (dispatch) => {
     return response;
 };
 
+export const restoreUser_thunk = () => async dispatch => {
+    const response = await csrfFetch('/api/session');
+    const data = await response.json();
+    dispatch(setUser_actionCreator(data.user));
+    return response;
+};
+
 const initialState = { user: null };
 
 const sessionReducer = (state = initialState, action) => {
