@@ -30,4 +30,14 @@ router.delete('/', (_req, res) => {
     return res.json({ mesasge: 'succes' });
 })
 
+//return session user - check if logged in
+router.get('/', restoreUser, (req, res) => {
+    const { user } = req;
+    if (user) {
+        return res.json({
+            user: user.toSafeObject()
+        })
+    } else return res.json({});
+});
+
 module.exports = router;
