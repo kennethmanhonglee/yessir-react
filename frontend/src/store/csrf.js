@@ -11,6 +11,7 @@ export async function csrfFetch(url, options = {}) {
     }
 
     // call fetch with url and options
+    console.log('kasljdhfsdjkfhasdj');
     const res = await window.fetch(url, options);
 
     // if err then throw response as error
