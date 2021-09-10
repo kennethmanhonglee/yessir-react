@@ -7,6 +7,7 @@ const cookieParser = require('cookie-parser');
 
 // routes
 const routes = require('./routes'); //for debugging
+const apiRouter = require('./routes/api/index');
 
 // checks environment
 const { environment } = require('./config');
@@ -32,5 +33,6 @@ app.use(csurf({
 }));
 
 app.use(routes);
+app.use('/api', apiRouter);
 
 module.exports = app;
