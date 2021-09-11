@@ -2,4 +2,16 @@
     height: 70vh;
     width: 100%;
     border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.linkIcon {
+    padding: 50px;
+}
+
+.FaSearch {
+    background-color: red;
 }
