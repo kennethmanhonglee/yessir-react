@@ -14,7 +14,7 @@ module.exports = {
         references: { model: 'Users' }
       },
       title: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(50),
         allowNull: false,
         unique: true
       },
@@ -23,15 +23,15 @@ module.exports = {
         allowNull: false
       },
       address: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(50),
         allowNull: false
       },
       city: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(50),
         allowNull: false
       },
       state: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(20),
         allowNull: false
       },
       zipCode: {
@@ -48,11 +48,13 @@ module.exports = {
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn('now')
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn('now')
       }
     });
   },
