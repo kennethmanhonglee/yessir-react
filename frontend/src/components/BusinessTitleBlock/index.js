@@ -6,6 +6,7 @@ const BusinessTitleBlock = () => {
             <div className={styles.content}>
                 <h2>food title</h2>
                 <span>* * * * *</span>
+
             </div>
         </div>
     );
