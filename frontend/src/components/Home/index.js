@@ -11,8 +11,9 @@ const Home = () => {
                     <Link to='/'>YESSIR!</Link> { /* placeholder link, change to logo later */}
                 </div>
                 <div className={styles.searchBar}>
-                    <FaSearch style={{ color: 'grey' }} />
-                    <input type='text' placeholder='Find your next spot' />
+                    <input className={styles.searchInput} type='text' placeholder='Find your next spot' />
+                    <input className={styles.searchInput} type='text' placeholder='address, neighborhood, city, state, or zip' />
+                    <button className={styles.searchButton}><FaSearch style={{ color: 'white' }} /></button>
                 </div>
             </div>
             <div className={styles.footer}>
