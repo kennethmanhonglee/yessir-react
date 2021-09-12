@@ -1,11 +1,10 @@
 import styles from './BusinessPage.module.css'
+import BusinessTitleBlock from '../BusinessTitleBlock';
 
 const BusinessPage = () => {
     return (
         <div className={styles.main}>
-            <div>
-                placeholder for business title block
-            </div>
+            <BusinessTitleBlock />
             <div>
                 placeholder for contentblock
             </div>

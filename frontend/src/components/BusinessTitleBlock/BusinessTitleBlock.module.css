@@ -1,0 +1,11 @@
+.main {
+    height: 400px;
+    border: 1px solid black; /*for debuggin*/
+    display: flex;
+    align-items: flex-end;
+}
+
+.content {
+    height: 200px;
+    border: 1px solid red;
+}
