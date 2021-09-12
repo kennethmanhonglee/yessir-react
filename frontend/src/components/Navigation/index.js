@@ -27,9 +27,8 @@ function Navigation({ isLoaded }) {
             <li className={styles.review}>
                 <NavLink exact to="/review-page">Write a Review</NavLink>
             </li>
-            <li>
-                {isLoaded && sessionLinks}
-            </li>
+            {isLoaded && <li>{sessionLinks}</li>
+            }
         </ul>
     );
 }

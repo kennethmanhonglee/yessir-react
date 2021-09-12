@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
+import styles from './ProfileButton.module.css';
 
 function ProfileButton({ user }) {
     const dispatch = useDispatch();
@@ -29,8 +30,8 @@ function ProfileButton({ user }) {
     };
 
     return (
-        <>
-            <button onClick={openMenu}>
+        <div className={styles.loginLogout}>
+            <button className={styles.profileButton} onClick={openMenu}>
                 <i className="fas fa-user-circle" />
             </button>
             {showMenu && (
@@ -42,7 +43,7 @@ function ProfileButton({ user }) {
                     </li>
                 </ul>
             )}
-        </>
+        </div>
     );
 }
 
