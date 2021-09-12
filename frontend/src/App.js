@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
+import BusinessPage from "./components/BusinessPage";
 
 import Home from "./components/Home";
 import Navigation from "./components/Navigation";
@@ -25,6 +26,9 @@ function App() {
           </Route>
           <Route path='/signup'>
             <SignupFormPage />
+          </Route>
+          <Route path='/business/:businessId'>
+            <BusinessPage />
           </Route>
         </Switch>
       )}

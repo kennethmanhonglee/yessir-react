@@ -1,5 +1,9 @@
 const BusinessPage = () => {
-    return null;
+    return (
+        <>
+            hello from business page
+        </>
+    );
 };
 
 export default BusinessPage;
