@@ -1,8 +1,10 @@
+import styles from './BusinessPage.module.css'
+
 const BusinessPage = () => {
     return (
-        <>
-            hello from business page
-        </>
+        <div className={styles.main}>
+            
+        </div>
     );
 };
 
