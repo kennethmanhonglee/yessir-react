@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { useParams } from "react-router";
+import faker from 'faker';
 
 import styles from './ReviewForm.module.css';
 
@@ -15,6 +16,7 @@ const ReviewForm = () => {
                     currentBusiness &&
                     <h2>{currentBusiness.title}</h2>
                 }
+                <textArea></textArea>
             </form>
         </div>
     )

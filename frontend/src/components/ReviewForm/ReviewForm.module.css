@@ -6,3 +6,11 @@
 .reviewForm {
     padding: 30px;
 }
+
+textarea {
+    height: 80vh;
+    width: 80%;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 20px;
+    padding: 10px;
+}
