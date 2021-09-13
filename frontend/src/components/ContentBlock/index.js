@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router';
 import styles from './ContentBlock.module.css';
+import BusinessPageLocationBlock from '../BusinessPageLocationBlock';
 
 const ContentBlock = () => {
     const { businessId } = useParams();
@@ -14,7 +15,8 @@ const ContentBlock = () => {
                     </span>
                 </Link>
             </div>
-            <div className={styles.locationAndAddress}>Location and address</div>
+            <hr></hr>
+            <BusinessPageLocationBlock />
             <div className={styles.reviewBlock}>Reviews</div>
         </>
     )

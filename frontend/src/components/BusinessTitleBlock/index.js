@@ -1,7 +1,6 @@
-import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 // import { useEffect } from 'react';
-import { Redirect, useParams } from 'react-router';
+import { useParams } from 'react-router';
 
 import styles from './BusinessTitleBlock.module.css'
 

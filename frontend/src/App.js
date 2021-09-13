@@ -14,6 +14,7 @@ import * as businessesActions from './store/businesses';
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+
   useEffect(() => {
     dispatch(sessionActions.restoreUser_thunk()).then(() => setIsLoaded(true));
   }, [dispatch]);
