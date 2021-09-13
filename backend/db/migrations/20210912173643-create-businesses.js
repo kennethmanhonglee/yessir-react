@@ -35,7 +35,7 @@ module.exports = {
         allowNull: false
       },
       zipCode: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING(50),
         allowNull: false
       },
       latitude: {

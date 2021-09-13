@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     title: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(50),
       allowNull: false,
       unique: true
     },
@@ -15,19 +15,19 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     address: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(50),
       allowNull: false
     },
     city: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(50),
       allowNull: false
     },
     state: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(50),
       allowNull: false
     },
     zipCode: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING(50),
       allowNull: false
     },
     latitude: {
