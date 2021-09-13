@@ -8,3 +8,23 @@ input:focus {
     outline: none;
     background-color: rgb(228, 228, 228);
 }
+.input {
+    /* input divs */
+    
+}
+
+.formDiv {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-content: center;
+    background-color: grey;
+    height: 100vh;
+    width: 50vw;
+}

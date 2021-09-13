@@ -30,60 +30,64 @@ function SignupFormPage() {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            {
-                errors.length === 0 ?
-                    null
-                    : <ul>
-                        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-                    </ul>
-            }
-            <div>
-                <label>
-                    Email
-                    <input
-                        type="text"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                    />
-                </label>
-            </div>
-            <div>
-                <label>
-                    Username
-                    <input
-                        type="text"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                        required
-                    />
-                </label>
-            </div>
-            <div>
-                <label>
-                    Password
-                    <input
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                    />
-                </label>
-            </div>
-            <div>
-                <label>
-                    Confirm Password
-                    <input
-                        type="password"
-                        value={confirmPassword}
-                        onChange={(e) => setConfirmPassword(e.target.value)}
-                        required
-                    />
-                </label>
-            </div>
-            <button type="submit">Sign Up</button>
-        </form>
+        <div className={styles.formDiv}>
+            <form
+                onSubmit={handleSubmit}
+            >
+                {
+                    errors.length === 0 ?
+                        null
+                        : <ul>
+                            {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+                        </ul>
+                }
+                <div className={styles.input}>
+                    <label>
+                        Email
+                        <input
+                            type="text"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                        />
+                    </label>
+                </div>
+                <div className={styles.input}>
+                    <label>
+                        Username
+                        <input
+                            type="text"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                            required
+                        />
+                    </label>
+                </div>
+                <div className={styles.input}>
+                    <label>
+                        Password
+                        <input
+                            type="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                        />
+                    </label>
+                </div>
+                <div className={styles.input}>
+                    <label>
+                        Confirm Password
+                        <input
+                            type="password"
+                            value={confirmPassword}
+                            onChange={(e) => setConfirmPassword(e.target.value)}
+                            required
+                        />
+                    </label>
+                </div>
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
     );
 }
 
