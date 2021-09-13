@@ -9,12 +9,17 @@ import BusinessPage from "./components/BusinessPage";
 import ReviewForm from './components/ReviewForm';
 
 import * as sessionActions from "./store/session";
+import * as businessesActions from './store/businesses';
 
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
     dispatch(sessionActions.restoreUser_thunk()).then(() => setIsLoaded(true));
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(businessesActions.loadBusinesses_thunk());
   }, [dispatch]);
 
   return (

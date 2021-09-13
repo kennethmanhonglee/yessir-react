@@ -1,13 +1,18 @@
 const LOAD = 'businesses/loadBusinesses';
 
-const loadBusinesses_actionCreator = () => {
+const loadBusinesses_actionCreator = (list) => {
     return {
-        type: LOAD
+        type: LOAD,
+        payload: list
     }
 };
 
-const loadBusinesses_thunk = () => (dispatch) => {
+export const loadBusinesses_thunk = () => async (dispatch) => {
+    const response = await fetch('/api/businesses');
+    const businesses = await response.json();
 
+    dispatch(loadBusinesses_actionCreator(businesses));
+    return businesses;
 }
 
 const initialState = {};
@@ -15,7 +20,11 @@ const initialState = {};
 const businessesReducer = (state = initialState, action) => {
     switch (action.type) {
         case (LOAD):
-
+            const newState = { ...state };
+            action.payload.forEach((business) => {
+                newState[business.id] = business;
+            })
+            return newState;
         default:
             return state;
     }
