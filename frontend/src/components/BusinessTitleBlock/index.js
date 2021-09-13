@@ -7,8 +7,10 @@ import styles from './BusinessTitleBlock.module.css'
 
 const BusinessTitleBlock = () => {
     const businesses = useSelector((state) => state.businesses);
+    console.log(businesses);
     const { businessId: currentBusinessId } = useParams();
     const currentBusiness = businesses[currentBusinessId];
+    console.log(currentBusiness);
 
     // first load - no state yet, businesses undefined
     // re-render - has state, can show information
