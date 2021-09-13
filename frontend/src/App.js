@@ -34,7 +34,7 @@ function App() {
           <Route path='/signup'>
             <SignupFormPage />
           </Route>
-          <Route exact path='/businesses/:businessesId/reviews/new'> {/*only for specific businesses*/}
+          <Route exact path='/businesses/:businessId/reviews/new'> {/*only for specific businesses*/}
             <ReviewForm />
           </Route>
           <Route path='/businesses/:businessId'>
