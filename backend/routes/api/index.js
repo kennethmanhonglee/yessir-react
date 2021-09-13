@@ -7,9 +7,11 @@ const { restoreUser, requireAuth } = require('../../utils/auth');
 const router = express.Router();
 const sessionRouter = require('./session');
 const usersRouter = require('./users');
+const businessRouter = require('./businesses');
 
 
 router.use('/session', sessionRouter);
 router.use('/users', usersRouter);
+router.use('/businesses', businessRouter);
 
 module.exports = router;
