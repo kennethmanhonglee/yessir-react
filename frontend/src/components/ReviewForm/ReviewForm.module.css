@@ -7,6 +7,11 @@
     padding: 30px;
 }
 
+h2 {
+    margin-bottom: 30px;
+    font-weight: 900;
+}
+
 textarea {
     height: 80vh;
     width: 80%;
