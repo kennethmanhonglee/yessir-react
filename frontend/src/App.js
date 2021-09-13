@@ -39,6 +39,9 @@ function App() {
           <Route path='/businesses/:businessId'>
             <BusinessPage />
           </Route>
+          <Route path='/'>
+            The page you are looking for is not found.
+          </Route>
         </Switch>
       )}
     </>
