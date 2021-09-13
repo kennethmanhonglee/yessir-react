@@ -17,13 +17,7 @@ const BusinessTitleBlock = () => {
         <div className={styles.main}>
             <div className={styles.content}>
                 {
-                    currentBusiness && (
-                        <>
-                            <h1>{currentBusiness.title}</h1>
-                            <h2>Address</h2>
-                            <span> {`${currentBusiness.address}, ${currentBusiness.city}, ${currentBusiness.state} ${currentBusiness.zipCode} ---- ${currentBusiness.latitude} - ${currentBusiness.longitude}`}</span>
-                        </>
-                    )
+                    currentBusiness && <h1 className={styles.title}>{currentBusiness.title}</h1>
                 }
             </div>
         </div >
