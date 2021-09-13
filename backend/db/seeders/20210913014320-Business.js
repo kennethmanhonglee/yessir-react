@@ -1,5 +1,7 @@
 'use strict';
 
+const faker = require("faker");
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
     /*
@@ -14,11 +16,23 @@ module.exports = {
     */
     const fakerBusinessesArrays = [];
     for (let i = 0; i < 20; i++) {
-      let newBusiness = {};
+      let amountUsers = 23; //22 faker users + 1 demo user
+      let ownerId = Math.floor(Math.random() * amountUsers) + 1; //+1 to get 1-max
+      let title = faker.company.companyName();
+      let description = faker.commerce.productDescription();
+      let address = faker.address.streetAddress();
+      let city = faker.address.city();
+      let state = faker.address.state();
+      let zipCode = faker.address.zipCode();
+      let latitude = faker.address.latitude();
+      let longitude = faker.address.longitude();
+
+      let newBusiness = { ownerId, title, description, address, city, state, zipCode, latitude, longitude };
+
       fakerBusinessesArrays.push(newBusiness);
     }
 
-    return queryInterface.bulkInsert('Businesses', []);
+    return queryInterface.bulkInsert('Businesses', fakerBusinessesArrays);
   },
 
   down: (queryInterface, Sequelize) => {

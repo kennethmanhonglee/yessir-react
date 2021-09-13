@@ -6,7 +6,7 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
     const fakerUserArray = [];
     for (let i = 0; i < 20; i++) {
-      let newUsername = faker.internet.username();
+      let newUsername = faker.internet.userName();
       let newEmail = faker.internet.email();
       let newPassword = faker.internet.password();
 
@@ -14,8 +14,6 @@ module.exports = {
 
       fakerUserArray.push(newUser);
     }
-
-    console.log(fakerUserArray);
 
     return queryInterface.bulkInsert('Users', [
       {
@@ -32,7 +30,7 @@ module.exports = {
         email: faker.internet.email(),
         username: 'FakeUser2',
         hashedPassword: bcrypt.hashSync(faker.internet.password()),
-      },
+      }, ...fakerUserArray
     ], {});
   },
 
