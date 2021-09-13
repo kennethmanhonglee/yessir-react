@@ -6,7 +6,7 @@ const ContentBlock = () => {
             {/* general structure, might create individual components later */}
             <div className={styles.contentBlockButtons}>Content block buttons</div>
             <div className={styles.locationAndAddress}>Location and address</div>
-            <div>Reviews</div>
+            <div className={styles.reviewBlock}>Reviews</div>
         </>
     )
 }
