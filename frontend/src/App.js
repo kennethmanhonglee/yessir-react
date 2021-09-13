@@ -14,7 +14,6 @@ import * as businessesActions from './store/businesses';
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
-  const [businessesIsLoaded, setBusinessesIsLoaded] = useState(false);
 
   useEffect(() => {
     dispatch(sessionActions.restoreUser_thunk()).then(() => setIsLoaded(true));
@@ -38,7 +37,7 @@ function App() {
           <Route exact path='/businesses/:businessesId/reviews/new'> {/*only for specific businesses*/}
             <ReviewForm />
           </Route>
-          <Route path='/businesses/:businessId' businessesisLoaded={businessesIsLoaded}>
+          <Route path='/businesses/:businessId'>
             <BusinessPage />
           </Route>
           <Route path='/'>
