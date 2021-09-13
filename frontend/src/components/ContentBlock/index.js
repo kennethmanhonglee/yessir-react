@@ -15,6 +15,7 @@ const ContentBlock = () => {
                     </span>
                 </Link>
             </div>
+            <hr></hr>
             <BusinessPageLocationBlock />
             <div className={styles.reviewBlock}>Reviews</div>
         </>

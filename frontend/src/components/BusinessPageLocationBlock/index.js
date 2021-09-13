@@ -1,6 +1,8 @@
+import styles from './BusinessPageLocationBlock.module.css'
+
 const BusinessPageLocationBlock = () => {
     return (
-        <div>
+        <div className={styles.locationBlock}>
             Hello from location block
         </div>
     );
