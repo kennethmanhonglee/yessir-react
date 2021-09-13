@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
-import BusinessPage from "./components/BusinessPage";
 
 import Home from "./components/Home";
 import Navigation from "./components/Navigation";
 import SignupFormPage from "./components/SignupFormPage";
+import BusinessPage from "./components/BusinessPage";
+import ReviewForm from './components/ReviewForm';
 
 import * as sessionActions from "./store/session";
 
@@ -27,7 +28,10 @@ function App() {
           <Route path='/signup'>
             <SignupFormPage />
           </Route>
-          <Route path='/business/:businessId'>
+          <Route exact path='/businesses/:businessesId/reviews/new'> {/*only for specific businesses*/}
+            <ReviewForm />
+          </Route>
+          <Route path='/businesses/:businessId'>
             <BusinessPage />
           </Route>
         </Switch>
