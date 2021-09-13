@@ -12,6 +12,12 @@ module.exports = {
         isBetaMember: false
       }], {});
     */
+    const fakerBusinessesArrays = [];
+    for (let i = 0; i < 20; i++) {
+      let newBusiness = {};
+      fakerBusinessesArrays.push(newBusiness);
+    }
+
     return queryInterface.bulkInsert('Businesses', []);
   },
 
