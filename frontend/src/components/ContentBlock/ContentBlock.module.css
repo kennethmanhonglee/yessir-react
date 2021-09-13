@@ -1,0 +1,11 @@
+.contentBlockButtons {
+    border: 1px solid black;
+}
+
+.locationAndAddress {
+    border: 1px solid red;
+}
+
+.reviewBlock {
+    border: 1px solid green;
+}
