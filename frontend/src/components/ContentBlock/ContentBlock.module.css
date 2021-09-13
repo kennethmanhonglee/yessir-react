@@ -1,5 +1,27 @@
 .contentBlockButtons {
-    border: 1px solid black;
+    /* border: 1px solid black; */
+    height: 10vh;
+    display: flex;
+    align-items: center;
+}
+
+.reviewButton {
+    box-sizing: border-box;
+    padding: 5px;
+    margin-left: 60px;
+    /* border: 1px solid blue; */
+    background-color: rgb(255, 109, 109);
+    color: white;
+    font-weight: 900;
+    border-radius: 5%;
+}
+
+.reviewButton:hover {
+    background-color: red;
+}
+
+.reviewButtonLink:hover {
+    text-decoration: none;
 }
 
 .locationAndAddress {
