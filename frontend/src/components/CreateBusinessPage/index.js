@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const CreateBusinessPage = () => {
     const [title, setTitle] = useState('');
@@ -7,8 +7,8 @@ const CreateBusinessPage = () => {
     const [city, setCity] = useState('');
     const [state, setState] = useState('');
     const [zipCode, setZipCode] = useState('');
-    const [latitude, setLatitude] = useState();
-    const [longitude, setLongitude] = useState();
+    const [latitude, setLatitude] = useState(0);
+    const [longitude, setLongitude] = useState(0);
     const [errors, setErrors] = useState([]);
 
     const updateTitle = (e) => setTitle(e.target.value);
@@ -30,7 +30,21 @@ const CreateBusinessPage = () => {
         if (!zipCode.length) newErrors.push('Zip Code must not be empty.');
         if (!latitude) newErrors.push('Latitude must not be empty.');
         if (!longitude) newErrors.push('Longitude must not be empty.');
+
         setErrors(newErrors);
+    }
+
+    // useEffect(validateBusiness, [title, description, address, city, state, zipCode, latitude, longitude, errors]);e
+
+    const resetStates = () => {
+        setTitle('');
+        setDescription('');
+        setAddress('');
+        setCity('');
+        setState('');
+        setZipCode('');
+        setLatitude(0);
+        setLongitude(0);
     }
 
     const handleSubmit = (e) => {
@@ -49,12 +63,14 @@ const CreateBusinessPage = () => {
             };
 
             // call thunk to create a business
-            console.log(errors);
             console.log(newBusiness); //placeholder
-        } else {
 
+            resetStates();
+        } else {
+            console.log('something wrong dude')
         }
 
+        console.log('FINISHED HANDLE SUBMIT!')
     }
 
     return (
@@ -106,13 +122,13 @@ const CreateBusinessPage = () => {
                     value={zipCode}
                 ></input>
                 <input
-                    type='text'
+                    type='number'
                     placeholder='Latitude'
                     onChange={updateLatitude}
                     value={latitude}
                 ></input>
                 <input
-                    type='text'
+                    type='number'
                     placeholder='Longitude'
                     onChange={updateLongitude}
                     value={longitude}
