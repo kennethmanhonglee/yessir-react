@@ -69,7 +69,7 @@ router.post('/', createBusinessValidations, asyncHandler(async (req, res) => {
 }));
 
 // probably need csrf too
-router.put('/:businessId', (req, res) => {
+router.put('/:businessId(\d+)', (req, res) => {
     res.json('hello from the put /api/businesses/:businessId');
 });
 

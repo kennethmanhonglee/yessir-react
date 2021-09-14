@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
+import { useSelector } from 'react-redux';
+import { csrfFetch } from "../../store/csrf";
 
 const CreateBusinessPage = () => {
+    const currentUser = useSelector((state) => state.session.user);
+
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [address, setAddress] = useState('');
@@ -34,7 +38,7 @@ const CreateBusinessPage = () => {
         setErrors(newErrors);
     }
 
-    useEffect(validateBusiness, [title, description, address, city, state, zipCode, latitude, longitude]);
+    // useEffect(validateBusiness, [title, description, address, city, state, zipCode, latitude, longitude]);
 
     const resetStates = () => {
         setTitle('');
@@ -47,11 +51,12 @@ const CreateBusinessPage = () => {
         setLongitude(0);
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         validateBusiness();
         if (errors.length === 0) {
             const newBusiness = {
+                ownerId: currentUser.id,
                 title,
                 description,
                 address,
@@ -63,11 +68,23 @@ const CreateBusinessPage = () => {
             };
 
             // call thunk to create a business
-            console.log(newBusiness); //placeholder
+            const response = await csrfFetch('/api/businesses', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(newBusiness)
+            });
+
+            if (response.ok) {
+                // add to redux store
+
+                // redirect to new business page
+            }
 
             resetStates();
         } else {
-            console.log('something wrong dude')
+            console.log(errors);
         }
 
         console.log('FINISHED HANDLE SUBMIT!')
@@ -90,48 +107,56 @@ const CreateBusinessPage = () => {
                     placeholder='Title'
                     onChange={updateTitle}
                     value={title}
+                    required
                 ></input>
                 <input
                     type='text'
                     placeholder='Description'
                     onChange={updateDescription}
                     value={description}
+                    required
                 ></input>
                 <input
                     type='text'
                     placeholder='Street Address'
                     onChange={updateAddress}
                     value={address}
+                    required
                 ></input>
                 <input
                     type='text'
                     placeholder='City'
                     onChange={updateCity}
                     value={city}
+                    required
                 ></input>
                 <input
                     type='text'
                     placeholder='State'
                     onChange={updateState}
                     value={state}
+                    required
                 ></input>
                 <input
                     type='text'
                     placeholder='Zip Code'
                     onChange={updateZipCode}
                     value={zipCode}
+                    required
                 ></input>
                 <input
                     type='number'
                     placeholder='Latitude'
                     onChange={updateLatitude}
                     value={latitude}
+                    required
                 ></input>
                 <input
                     type='number'
                     placeholder='Longitude'
                     onChange={updateLongitude}
                     value={longitude}
+                    required
                 ></input>
                 <button type='submit'>Create a business</button>
             </form>
