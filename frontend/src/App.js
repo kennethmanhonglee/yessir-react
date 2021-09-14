@@ -37,6 +37,9 @@ function App() {
           <Route exact path='/businesses/:businessId/reviews/new'> {/*only for specific businesses*/}
             <ReviewForm />
           </Route>
+          <Route path='/businesses/create'>
+            hello from create businesses route
+          </Route>
           <Route path='/businesses/:businessId'>
             <BusinessPage />
           </Route>
