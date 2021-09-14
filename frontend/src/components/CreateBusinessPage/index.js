@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector } from 'react-redux';
+import { addBusiness_thunk } from "../../store/businesses";
 import { csrfFetch } from "../../store/csrf";
 
 const CreateBusinessPage = () => {
@@ -55,7 +56,7 @@ const CreateBusinessPage = () => {
         e.preventDefault();
         validateBusiness();
         if (errors.length === 0) {
-            const newBusiness = {
+            const business = {
                 ownerId: currentUser.id,
                 title,
                 description,
@@ -73,11 +74,15 @@ const CreateBusinessPage = () => {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(newBusiness)
+                body: JSON.stringify(business)
             });
 
             if (response.ok) {
+                const newBusiness = await response.json();
+                console.log('we made a new business, now back to our handlesubmit', newBusiness);
                 // add to redux store
+                // call created thunk
+                const createdBusiness = await addBusiness_thunk(newBusiness.id);
 
                 // redirect to new business page
             }

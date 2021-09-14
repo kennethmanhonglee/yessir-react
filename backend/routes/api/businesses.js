@@ -68,6 +68,11 @@ router.post('/', createBusinessValidations, asyncHandler(async (req, res) => {
     }
 }));
 
+router.get('/:businessId', asyncHandler(async (req, res) => {
+    const { businessId } = parsInt(req.params, 10);
+    console.log('THIS IS MY ID!!!!', businessId);
+}));
+
 // probably need csrf too
 router.put('/:businessId(\d+)', (req, res) => {
     res.json('hello from the put /api/businesses/:businessId');
