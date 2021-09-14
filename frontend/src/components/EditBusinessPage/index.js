@@ -68,6 +68,8 @@ const EditBusinessPage = () => {
 
             // call thunk to update business
             const newBusiness = await dispatch(editBusiness_thunk(business));
+
+            history.push(`/businesses/${businessId}`);
         }
     };
 
