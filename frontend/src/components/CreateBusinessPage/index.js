@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { addBusiness_thunk } from "../../store/businesses";
 import { useHistory } from "react-router-dom";
+
+import { addBusiness_thunk } from "../../store/businesses";
 
 const CreateBusinessPage = () => {
     const currentUser = useSelector((state) => state.session.user);
@@ -42,19 +43,6 @@ const CreateBusinessPage = () => {
         setErrors(newErrors);
     }
 
-    // useEffect(validateBusiness, [title, description, address, city, state, zipCode, latitude, longitude]);
-
-    const resetStates = () => {
-        setTitle('');
-        setDescription('');
-        setAddress('');
-        setCity('');
-        setState('');
-        setZipCode('');
-        setLatitude(0);
-        setLongitude(0);
-    }
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         validateBusiness();
@@ -72,12 +60,10 @@ const CreateBusinessPage = () => {
             };
 
             // call thunk to create a business
-
             const newBusiness = await dispatch(addBusiness_thunk(business));
+
             const { id } = newBusiness;
             return history.push(`/businesses/${id}`);
-
-            resetStates();
         } else {
             console.log(errors);
         }
