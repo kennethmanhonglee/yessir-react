@@ -2,6 +2,7 @@ import { csrfFetch } from "./csrf";
 
 const LOAD = 'businesses/loadBusinesses';
 const ADD = 'businesses/addBusiness';
+const EDIT = 'businesses/editBusiness';
 
 // action creators
 const loadBusinesses_actionCreator = (list) => {
@@ -15,6 +16,13 @@ const addBusiness_actionCreator = (newBusiness) => {
     return {
         type: ADD,
         payload: newBusiness
+    }
+}
+
+const editBusiness_actionCreator = (editedBusiness) => {
+    return {
+        type: EDIT,
+        payload: editedBusiness
     }
 }
 
@@ -41,6 +49,10 @@ export const addBusiness_thunk = (business) => async (dispatch) => {
 
     dispatch(addBusiness_actionCreator(newBusiness));
     return newBusiness;
+};
+
+export const editBusiness_thunk = (editedBusiness) => (dispatch) => {
+    console.log(editedBusiness);
 };
 
 const initialState = {};

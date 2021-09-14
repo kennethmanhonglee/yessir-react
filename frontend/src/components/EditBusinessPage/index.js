@@ -1,26 +1,27 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from "react-router-dom";
+import { editBusiness_thunk } from "../../store/businesses";
 
 // add a thunk
 
 const EditBusinessPage = () => {
     const { businessId } = useParams();
     const currentUser = useSelector((state) => state.session.user);
-    const currentBusiness = useSelector((state) => state.businesses[businessId])
     const dispatch = useDispatch();
     const history = useHistory();
 
 
-    const [title, setTitle] = useState(currentBusiness.title);
-    const [description, setDescription] = useState(currentBusiness.description);
-    const [address, setAddress] = useState(currentBusiness.address);
-    const [city, setCity] = useState(currentBusiness.city);
-    const [state, setState] = useState(currentBusiness.state);
-    const [zipCode, setZipCode] = useState(currentBusiness.zipCode);
-    const [latitude, setLatitude] = useState(currentBusiness.latitude);
-    const [longitude, setLongitude] = useState(currentBusiness.longitude);
+    const [title, setTitle] = useState('');
+    const [description, setDescription] = useState('');
+    const [address, setAddress] = useState('');
+    const [city, setCity] = useState('');
+    const [state, setState] = useState('');
+    const [zipCode, setZipCode] = useState('');
+    const [latitude, setLatitude] = useState(0);
+    const [longitude, setLongitude] = useState(0);
     const [errors, setErrors] = useState([]);
+
 
     const updateTitle = (e) => setTitle(e.target.value);
     const updateDescription = (e) => setDescription(e.target.value);
@@ -45,12 +46,15 @@ const EditBusinessPage = () => {
         setErrors(newErrors);
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         validateBusiness();
 
-        if (errors.legnth === 0) {
+        console.log('this is the errors array', errors)
+        if (errors.length === 0) {
+            console.log('hello i am in side of if')
             const business = {
+                id: businessId,
                 ownerId: currentUser.id,
                 title,
                 description,
@@ -63,7 +67,7 @@ const EditBusinessPage = () => {
             };
 
             // call thunk to update business
-            
+            const newBusiness = await dispatch(editBusiness_thunk(business));
         }
     };
 
