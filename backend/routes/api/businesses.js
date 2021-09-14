@@ -11,9 +11,25 @@ router.get('/', asyncHandler(async (req, res) => {
 }));
 
 // need csrf, cant test until implement login
-router.post('/', (req, res) => {
-    res.json('hello from the post /api/businesses route! create your business here');
-});
+router.post('/', asyncHandler(async (req, res) => {
+    const { ownerId, title, description, address, city, state, zipCode, latitude, longitude } = req.body;
+
+    //add in validation
+
+    const newBusiness = await Business.create({
+        ownerId,
+        title,
+        description,
+        address,
+        city,
+        state,
+        zipCode,
+        latitude,
+        longitude
+    });
+
+    res.json(newBusiness);
+}));
 
 // probably need csrf too
 router.put('/:businessId', (req, res) => {
