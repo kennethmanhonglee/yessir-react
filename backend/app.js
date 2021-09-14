@@ -25,6 +25,8 @@ app.use(helmet({
     contentSecurityPolicy: false
 }));
 
+// uncomment later to use csrf protection
+//use csrf on all routes
 app.use(csurf({
     cookie: {
         secure: isProduction,

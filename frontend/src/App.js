@@ -7,9 +7,11 @@ import Navigation from "./components/Navigation";
 import SignupFormPage from "./components/SignupFormPage";
 import BusinessPage from "./components/BusinessPage";
 import ReviewForm from './components/ReviewForm';
+import CreateBusinessPage from './components/CreateBusinessPage';
 
 import * as sessionActions from "./store/session";
 import * as businessesActions from './store/businesses';
+import EditBusinessPage from "./components/EditBusinessPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -36,6 +38,12 @@ function App() {
           </Route>
           <Route exact path='/businesses/:businessId/reviews/new'> {/*only for specific businesses*/}
             <ReviewForm />
+          </Route>
+          <Route path='/businesses/create'>
+            <CreateBusinessPage />
+          </Route>
+          <Route path='/businesses/:businessId/edit'>
+            <EditBusinessPage />
           </Route>
           <Route path='/businesses/:businessId'>
             <BusinessPage />
