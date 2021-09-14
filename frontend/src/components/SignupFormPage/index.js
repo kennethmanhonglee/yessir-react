@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 
 import LoginFormModal from "../LoginFormModal";
@@ -74,7 +74,7 @@ function SignupFormPage() {
                 <button className={styles.submitButton} type="submit">Sign Up</button>
                 <div className={styles.login}>
                     Already a member?
-                    <LoginFormModal />
+                    <Link>Log in</Link>
                 </div>
             </form >
 
