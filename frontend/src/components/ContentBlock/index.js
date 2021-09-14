@@ -2,9 +2,12 @@ import { Link } from 'react-router-dom';
 import { useParams } from 'react-router';
 import styles from './ContentBlock.module.css';
 import BusinessPageLocationBlock from '../BusinessPageLocationBlock';
+import { useSelector } from 'react-redux';
 
 const ContentBlock = () => {
     const { businessId } = useParams();
+    const business = useSelector((state) => state.businesses[businessId]);
+    const user = useSelector((state) => state.session.user);
     return (
         <>
             {/* general structure, might create individual components later */}
@@ -14,6 +17,14 @@ const ContentBlock = () => {
                         Write a Review
                     </span>
                 </Link>
+                {
+
+                    <Link to={`/businesses/${businessId}/edit`}>
+                        <span>
+                            Edit Your Business
+                        </span>
+                    </Link>
+                }
             </div>
             <hr></hr>
             <BusinessPageLocationBlock />
