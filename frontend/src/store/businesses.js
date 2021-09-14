@@ -45,20 +45,29 @@ export const addBusiness_thunk = (business) => async (dispatch) => {
     });
     const newBusiness = await response.json();
 
-    console.log('I AM AN OBNOXIOUS CONSOLE LOG WEEE WOOOO WEEE WOOEOOWOWWOWOOWO', newBusiness);
-
     dispatch(addBusiness_actionCreator(newBusiness));
     return newBusiness;
 };
 
-export const editBusiness_thunk = (editedBusiness) => (dispatch) => {
-    console.log(editedBusiness);
+export const editBusiness_thunk = (editedBusiness) => async (dispatch) => {
+    const { id } = editedBusiness;
+    const response = await csrfFetch(`/api/businesses/${parseInt(id)}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(editedBusiness)
+    });
+
+    const newBusiness = await response.json();
+    dispatch(editBusiness_actionCreator(newBusiness));
+    return newBusiness;
 };
 
 const initialState = {};
 
 const businessesReducer = (state = initialState, action) => {
-    let newState;
+    let newState, newBusiness;
     switch (action.type) {
         case (LOAD):
             newState = Object.assign({}, state);
@@ -68,7 +77,12 @@ const businessesReducer = (state = initialState, action) => {
             return newState;
         case (ADD):
             newState = Object.assign({}, state);
-            const newBusiness = action.payload;
+            newBusiness = action.payload;
+            newState[newBusiness.id] = newBusiness;
+            return newState;
+        case (EDIT):
+            newState = Object.assign({}, state);
+            newBusiness = action.payload;
             newState[newBusiness.id] = newBusiness;
             return newState;
         default:

@@ -3,10 +3,11 @@ const asyncHandler = require('express-async-handler');
 const { check, validationResult } = require('express-validator');
 
 const express = require('express');
+const { requireAuth } = require('../../utils/auth');
 
 const router = express.Router();
 
-const createBusinessValidations = [
+const businessValidations = [
     check('ownerId')
         .exists()
         .withMessage('Must have a ownerID'),
@@ -42,7 +43,7 @@ router.get('/', asyncHandler(async (req, res) => {
 }));
 
 // need csrf, cant test until implement login
-router.post('/', createBusinessValidations, asyncHandler(async (req, res) => {
+router.post('/', requireAuth, businessValidations, asyncHandler(async (req, res) => {
     const { ownerId, title, description, address, city, state, zipCode, latitude, longitude } = req.body;
 
     //add in validation
@@ -69,8 +70,32 @@ router.post('/', createBusinessValidations, asyncHandler(async (req, res) => {
 }));
 
 // probably need csrf too
-router.put('/:businessId(\d+)', (req, res) => {
-    res.json('hello from the put /api/businesses/:businessId');
-});
+router.put('/:businessId(\\d+)', requireAuth, businessValidations, asyncHandler(async (req, res) => {
+    const { id, ownerId, title, description, address, city, state, zipCode, latitude, longitude } = req.body;
+    const validationErrors = validationResult(req);
+    if (validationErrors.isEmpty()) {
+        const business = await Business.findByPk(id);
+        if (business) {
+            await business.update({
+                ownerId,
+                title,
+                description,
+                address,
+                city,
+                state,
+                zipCode,
+                latitude,
+                longitude
+            });
+            return res.status(301).json(business);
+        } else {
+            res.status(404).json('business not found');
+        }
+    } else {
+        const errors = validationErrors.errors.map((error) => error.msg);
+        res.status(404).json('');
+
+    }
+}));
 
 module.exports = router;
