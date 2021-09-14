@@ -7,9 +7,41 @@ nav {
 }
 
 .review, .loginSignup {
-    padding: 10px 20px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+}
+
+.loginSignup {
+    margin-right: 20px;
+}
+
+.review {
+    margin-left: 2%;
 }
 
 .signup {
     margin-left: 20px;
 }
+
+.signup:hover {
+    text-decoration: none;
+    background-color: rgb(255, 109, 109);;
+}
+
+button, NavLink {
+    font-size: 1rem;
+}
+
+button:hover {
+    border-bottom: 1px solid black;
+    padding-top: 3px;
+}
+
+.signup {
+    padding: 5px;
+    border: 1px solid red;
+    border-radius: 10%;
+}
+
+ 
