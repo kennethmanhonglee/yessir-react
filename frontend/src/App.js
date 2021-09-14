@@ -7,6 +7,7 @@ import Navigation from "./components/Navigation";
 import SignupFormPage from "./components/SignupFormPage";
 import BusinessPage from "./components/BusinessPage";
 import ReviewForm from './components/ReviewForm';
+import CreateBusinessPage from './components/CreateBusinessPage';
 
 import * as sessionActions from "./store/session";
 import * as businessesActions from './store/businesses';
@@ -38,7 +39,7 @@ function App() {
             <ReviewForm />
           </Route>
           <Route path='/businesses/create'>
-            hello from create businesses route
+            <CreateBusinessPage />
           </Route>
           <Route path='/businesses/:businessId'>
             <BusinessPage />
