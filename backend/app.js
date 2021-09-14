@@ -25,13 +25,15 @@ app.use(helmet({
     contentSecurityPolicy: false
 }));
 
-app.use(csurf({
-    cookie: {
-        secure: isProduction,
-        sameSite: isProduction && "Lax",
-        httpOnly: true
-    }
-}));
+// uncomment later to use csrf protection
+//use csrf on all routes
+// app.use(csurf({
+//     cookie: {
+//         secure: isProduction,
+//         sameSite: isProduction && "Lax",
+//         httpOnly: true
+//     }
+// }));
 
 app.use(routes);
 app.use('/api', apiRouter);
