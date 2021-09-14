@@ -34,7 +34,7 @@ const CreateBusinessPage = () => {
         setErrors(newErrors);
     }
 
-    // useEffect(validateBusiness, [title, description, address, city, state, zipCode, latitude, longitude, errors]);e
+    useEffect(validateBusiness, [title, description, address, city, state, zipCode, latitude, longitude]);
 
     const resetStates = () => {
         setTitle('');
