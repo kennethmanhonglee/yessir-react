@@ -33,11 +33,6 @@ button, NavLink {
     font-size: 1rem;
 }
 
-button:hover {
-    border-bottom: 1px solid black;
-    padding-top: 3px;
-}
-
 .signup {
     padding: 5px;
     border: 1px solid red;

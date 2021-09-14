@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 
+import LoginFormModal from "../LoginFormModal";
 import styles from './SignupForm.module.css'
 
 function SignupFormPage() {
@@ -31,6 +32,7 @@ function SignupFormPage() {
 
     return (
         <div className={styles.formDiv}>
+            <h2 className={styles.header}>Sign up for Yessir!</h2>
             <form
                 onSubmit={handleSubmit}
             >
@@ -41,53 +43,44 @@ function SignupFormPage() {
                             {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                         </ul>
                 }
-                <div className={styles.input}>
-                    <label>
-                        Email
-                        <input
-                            type="text"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            required
-                        />
-                    </label>
+                <input
+                    placeholder='Email'
+                    type="text"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                />
+                <input
+                    placeholder='Username'
+                    type="text"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    required
+                />
+                <input
+                    placeholder='Password'
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                />
+                <input
+                    placeholder='Confirm Password'
+                    type="password"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    required
+                />
+                <button className={styles.submitButton} type="submit">Sign Up</button>
+                <div className={styles.login}>
+                    Already a member?
+                    <LoginFormModal />
                 </div>
-                <div className={styles.input}>
-                    <label>
-                        Username
-                        <input
-                            type="text"
-                            value={username}
-                            onChange={(e) => setUsername(e.target.value)}
-                            required
-                        />
-                    </label>
-                </div>
-                <div className={styles.input}>
-                    <label>
-                        Password
-                        <input
-                            type="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            required
-                        />
-                    </label>
-                </div>
-                <div className={styles.input}>
-                    <label>
-                        Confirm Password
-                        <input
-                            type="password"
-                            value={confirmPassword}
-                            onChange={(e) => setConfirmPassword(e.target.value)}
-                            required
-                        />
-                    </label>
-                </div>
-                <button type="submit">Sign Up</button>
-            </form>
-        </div>
+            </form >
+
+            <div>
+            </div>
+        </div >
     );
 }
 

@@ -1,3 +1,7 @@
+.header {
+    margin: 50px;
+}
+
 ul {
     color: red;
     margin: 40px 200px;
@@ -8,15 +12,30 @@ input:focus {
     outline: none;
     background-color: rgb(228, 228, 228);
 }
-.input {
+input {
     /* input divs */
-    
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 3px;
+    margin: 10px 30% ;
+    height: 30px;
+}
+
+.submitButton {
+    background-color: rgb(255, 109, 109);;
+    width: 30%;
+    border-radius: 3px;
+    align-self: center;
+}
+
+.submitButton:hover {
+    background-color: red;
 }
 
 .formDiv {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-content: center;
+    align-items: center;
 }
 
 form {
@@ -24,7 +43,13 @@ form {
     flex-direction: column;
     justify-content: flex-start;
     align-content: center;
-    background-color: grey;
+    /* background-color: grey; */
     height: 100vh;
     width: 50vw;
+}
+
+.login {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
 }
