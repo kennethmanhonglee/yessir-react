@@ -8,6 +8,7 @@ const ContentBlock = () => {
     const { businessId } = useParams();
     const business = useSelector((state) => state.businesses[businessId]);
     const user = useSelector((state) => state.session.user);
+    console.log(business.ownerId, user.id);
     return (
         <>
             {/* general structure, might create individual components later */}
@@ -18,12 +19,13 @@ const ContentBlock = () => {
                     </span>
                 </Link>
                 {
-
-                    <Link to={`/businesses/${businessId}/edit`}>
-                        <span>
-                            Edit Your Business
-                        </span>
-                    </Link>
+                    business.ownerId === user.id ?
+                        <Link className={styles.editBusinessLink} to={`/businesses/${businessId}/edit`}>
+                            <span className={styles.editBusiness}>
+                                Edit Your Business
+                            </span>
+                        </Link>
+                        : null
                 }
             </div>
             <hr></hr>
