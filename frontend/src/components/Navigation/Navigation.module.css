@@ -1,15 +1,45 @@
-ul {
+nav {
     list-style-type: none;
     display: flex;
     justify-content: space-between;
     height: 45px;
     border-bottom: 1px solid rgba(0,0,0,0.2);
+    background-color: #d32323;
+    color: white;
 }
 
 .review, .loginSignup {
-    padding: 10px 20px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+}
+
+.loginSignup {
+    margin-right: 20px;
+    color: white;
+}
+
+.review {
+    margin-left: 2%;
 }
 
 .signup {
     margin-left: 20px;
 }
+
+.signup:hover {
+    text-decoration: none;
+    background-color: rgb(255, 109, 109);;
+}
+
+button, NavLink {
+    font-size: 1rem;
+}
+
+.signup {
+    padding: 5px;
+    border: 1px solid red;
+    border-radius: 10%;
+}
+
+ 
