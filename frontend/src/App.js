@@ -11,6 +11,7 @@ import CreateBusinessPage from './components/CreateBusinessPage';
 
 import * as sessionActions from "./store/session";
 import * as businessesActions from './store/businesses';
+import EditBusinessPage from "./components/EditBusinessPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -40,6 +41,9 @@ function App() {
           </Route>
           <Route path='/businesses/create'>
             <CreateBusinessPage />
+          </Route>
+          <Route path='/businesses/:businessId/edit'>
+            <EditBusinessPage />
           </Route>
           <Route path='/businesses/:businessId'>
             <BusinessPage />
