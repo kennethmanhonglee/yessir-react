@@ -69,7 +69,7 @@ router.post('/', createBusinessValidations, asyncHandler(async (req, res) => {
 }));
 
 router.get('/:businessId', asyncHandler(async (req, res) => {
-    const { businessId } = parsInt(req.params, 10);
+    const { businessId } = req.params;
     console.log('THIS IS MY ID!!!!', businessId);
 }));
 

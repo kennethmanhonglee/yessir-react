@@ -1,10 +1,13 @@
-import { useEffect, useState } from "react";
-import { useSelector } from 'react-redux';
+import { useState } from "react";
+import { useDispatch, useSelector } from 'react-redux';
 import { addBusiness_thunk } from "../../store/businesses";
-import { csrfFetch } from "../../store/csrf";
+import { useHistory } from "react-router-dom";
 
 const CreateBusinessPage = () => {
     const currentUser = useSelector((state) => state.session.user);
+    const dispatch = useDispatch();
+    const history = useHistory();
+
 
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
@@ -69,23 +72,10 @@ const CreateBusinessPage = () => {
             };
 
             // call thunk to create a business
-            const response = await csrfFetch('/api/businesses', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(business)
-            });
 
-            if (response.ok) {
-                const newBusiness = await response.json();
-                console.log('we made a new business, now back to our handlesubmit', newBusiness);
-                // add to redux store
-                // call created thunk
-                const createdBusiness = await addBusiness_thunk(newBusiness.id);
-
-                // redirect to new business page
-            }
+            const newBusiness = await dispatch(addBusiness_thunk(business));
+            const { id } = newBusiness;
+            return history.push(`/businesses/${id}`);
 
             resetStates();
         } else {
