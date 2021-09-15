@@ -8,7 +8,7 @@ nav {
     color: white;
 }
 
-.review, .loginSignup {
+.reviewBusinesses, .loginSignup, .home, .functionButtons {
     height: 45px;
     display: flex;
     align-items: center;
@@ -19,7 +19,7 @@ nav {
     color: white;
 }
 
-.review {
+.reviewBusinesses {
     margin-left: 2%;
 }
 
@@ -42,4 +42,6 @@ button, NavLink {
     border-radius: 10%;
 }
 
- 
+.createBusiness {
+    padding-right: 70px;
+}
