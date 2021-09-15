@@ -26,7 +26,7 @@ const ReviewForm = () => {
         e.preventDefault();
 
         if (errors.length === 0) {
-            // post review
+            // post review - write thunk, write backend route
             console.log(content, rating);
             setContent('');
             setRating(1);
