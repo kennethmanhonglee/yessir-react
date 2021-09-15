@@ -5,7 +5,7 @@
     align-items: center;
 }
 
-.reviewButton, .editBusiness {
+.reviewButton, .editBusiness, .deleteBusiness {
     box-sizing: border-box;
     padding: 5px;
     margin-left: 40px;
@@ -16,12 +16,16 @@
     border-radius: 5%;
 }
 
-.reviewButton:hover, .editBusiness:hover {
+.reviewButton:hover, .editBusiness:hover, .deleteBusiness:hover {
     background-color: red;
 }
 
-.reviewButtonLink:hover, .editBusinessLink:hover {
+.reviewButtonLink:hover, .editBusinessLink:hover, .deleteBusinessLink:hover {
     text-decoration: none;
+}
+
+.deleteBusinessLink {
+    cursor: pointer;
 }
 
 .locationAndAddress {
