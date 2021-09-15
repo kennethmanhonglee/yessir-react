@@ -1,5 +1,6 @@
 import { csrfFetch } from "./csrf";
 
+// types
 const LOAD = 'businesses/loadBusinesses';
 const ADD = 'businesses/addBusiness';
 const EDIT = 'businesses/editBusiness';

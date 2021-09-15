@@ -1,8 +1,8 @@
-const { Business, Review } = require('../../db/models');
+const express = require('express');
 const asyncHandler = require('express-async-handler');
 const { check, validationResult } = require('express-validator');
 
-const express = require('express');
+const { Business, Review } = require('../../db/models');
 const { requireAuth } = require('../../utils/auth');
 
 const router = express.Router();
