@@ -35,7 +35,12 @@ function ProfileButton({ user }) {
                 <i className={`fas fa-user-circle ${styles.icon}`} />
             </button>
             {showMenu && (
-                <ul className="profile-dropdown">
+                <ul className="profile-dropdown" style={{
+                    backgroundColor: 'white',
+                    border: '1px solid black',
+                    padding: '5px',
+                    margin: '10px'
+                }}>
                     <li>{user.username}</li>
                     <li>{user.email}</li>
                     <li>

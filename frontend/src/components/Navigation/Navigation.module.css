@@ -20,7 +20,8 @@ nav {
 }
 
 .reviewBusinesses {
-    margin-left: 2%;
+    position: absolute;
+    left: 2%;
 }
 
 .signup {

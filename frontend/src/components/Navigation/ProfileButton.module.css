@@ -1,8 +1,14 @@
 .loginLogout {
     display: inline-block;
     margin-right: 30px;
+    position: absolute;
+    right: 0;
 }
 
 .icon {
     color: white;
+}
+
+.profileButton {
+    position: absolute;
 }
