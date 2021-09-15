@@ -13,7 +13,7 @@ const ContentBlock = () => {
             {/* general structure, might create individual components later */}
             <div className={styles.contentBlockButtons}>
                 {
-                    business &&
+                    business && user &&
                     <Link className={styles.reviewButtonLink} to={`/businesses/${businessId}/reviews/new`}>
                         <span className={styles.reviewButton}>
                             Write a Review
@@ -21,7 +21,7 @@ const ContentBlock = () => {
                     </Link>
                 }
                 {
-                    user && business.ownerId === user.id ?
+                    business && user && business.ownerId === user.id ?
                         <Link className={styles.editBusinessLink} to={`/businesses/${businessId}/edit`}>
                             <span className={styles.editBusiness}>
                                 Edit Your Business
