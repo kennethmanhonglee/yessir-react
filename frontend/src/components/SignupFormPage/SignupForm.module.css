@@ -48,8 +48,13 @@ form {
     width: 50vw;
 }
 
-.login {
+.loginDiv {
     margin-top: 20px;
     display: flex;
     justify-content: center;
+}
+
+.loginLink:hover {
+    text-decoration: underline;
+    cursor: pointer;
 }

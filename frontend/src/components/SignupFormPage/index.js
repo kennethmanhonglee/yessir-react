@@ -3,8 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect, Link } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 
-import LoginFormModal from "../LoginFormModal";
 import styles from './SignupForm.module.css'
+import { Modal } from '../../context/Modal';
+import LoginForm from "../LoginFormModal/LoginForm";
 
 function SignupFormPage() {
     const dispatch = useDispatch();
@@ -14,6 +15,8 @@ function SignupFormPage() {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [errors, setErrors] = useState([]);
+
+    const [showModal, setShowModal] = useState(false);
 
     if (sessionUser) return <Redirect to="/" />;
 
@@ -72,9 +75,15 @@ function SignupFormPage() {
                     required
                 />
                 <button className={styles.submitButton} type="submit">Sign Up</button>
-                <div className={styles.login}>
-                    Already a member?
-                    <Link>Log in</Link>
+                <div className={styles.loginDiv}>
+                    <h4>Already a member?</h4>
+                    <span className={styles.loginLink} onClick={() => setShowModal(true)}>Log in</span>
+                    {
+                        showModal &&
+                        <Modal onClose={() => setShowModal(false)}>
+                            <LoginForm />
+                        </Modal>
+                    }
                 </div>
             </form >
 
