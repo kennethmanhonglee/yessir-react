@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useParams } from 'react-router';
+import { useHistory, useParams } from 'react-router';
 import styles from './ContentBlock.module.css';
 import BusinessPageLocationBlock from '../BusinessPageLocationBlock';
 import { useDispatch, useSelector } from 'react-redux';
@@ -10,6 +10,7 @@ const ContentBlock = () => {
     const business = useSelector((state) => state.businesses[businessId]);
     const user = useSelector((state) => state.session.user);
     const dispatch = useDispatch();
+    const history = useHistory();
 
 
     // when deleteBusinessLink is clicked
@@ -18,6 +19,8 @@ const ContentBlock = () => {
     const deleteBusiness = () => {
         const deleteMessage = dispatch(deleteBusiness_thunk);
         alert(deleteMessage);
+
+        return history.push('/');
     }
 
     return (
@@ -40,7 +43,7 @@ const ContentBlock = () => {
                                     Edit Your Business
                                 </span>
                             </Link>
-                            <div className={styles.deleteBusinessLink}>
+                            <div className={styles.deleteBusinessLink} onClick={deleteBusiness}>
                                 <span className={styles.deleteBusiness}>
                                     Delete Your Business
                                 </span>
