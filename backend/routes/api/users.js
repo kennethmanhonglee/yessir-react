@@ -37,6 +37,4 @@ router.post('/', validateSignup, asyncHandler(async (req, res) => {
     return res.json({ user });
 }));
 
-
-
 module.exports = router;
