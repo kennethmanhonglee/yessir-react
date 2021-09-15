@@ -2,19 +2,22 @@ import { Link } from 'react-router-dom';
 import { useParams } from 'react-router';
 import styles from './ContentBlock.module.css';
 import BusinessPageLocationBlock from '../BusinessPageLocationBlock';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteBusiness_thunk } from '../../store/businesses';
 
 const ContentBlock = () => {
     const { businessId } = useParams();
     const business = useSelector((state) => state.businesses[businessId]);
     const user = useSelector((state) => state.session.user);
+    const dispatch = useDispatch();
 
 
     // when deleteBusinessLink is clicked
     // 1. show modal to ask are you sure
     // if they confirm, make request to backend api to delete
     const deleteBusiness = () => {
-        
+        const deleteMessage = dispatch(deleteBusiness_thunk);
+        alert(deleteMessage);
     }
 
     return (

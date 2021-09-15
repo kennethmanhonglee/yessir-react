@@ -3,6 +3,7 @@ import { csrfFetch } from "./csrf";
 const LOAD = 'businesses/loadBusinesses';
 const ADD = 'businesses/addBusiness';
 const EDIT = 'businesses/editBusiness';
+const DELETE = 'businesses/deleteBusiness';
 
 // action creators
 const loadBusinesses_actionCreator = (list) => {
@@ -23,6 +24,13 @@ const editBusiness_actionCreator = (editedBusiness) => {
     return {
         type: EDIT,
         payload: editedBusiness
+    }
+}
+
+const deleteBusiness_actionCreator = (businessIdToDelete) => {
+    return {
+        type: DELETE,
+        payload: businessIdToDelete
     }
 }
 
@@ -64,6 +72,23 @@ export const editBusiness_thunk = (editedBusiness) => async (dispatch) => {
     return newBusiness;
 };
 
+export const deleteBusiness_thunk = (businessIdToDelete) => async (dispatch) => {
+    const response = await csrfFetch(`api/businesses/${parseInt(businessIdToDelete)}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+
+    const deleteResponse = await response.json();
+    if (deleteResponse === 'deleted') {
+        await dispatch(deleteBusiness_actionCreator(businessIdToDelete));
+        return 'delete successful';
+    } else {
+        return 'delete unsuccessful';
+    }
+};
+
 const initialState = {};
 
 const businessesReducer = (state = initialState, action) => {
@@ -84,6 +109,11 @@ const businessesReducer = (state = initialState, action) => {
             newState = Object.assign({}, state);
             newBusiness = action.payload;
             newState[newBusiness.id] = newBusiness;
+            return newState;
+        case (DELETE):
+            newState = Object.assign({}, state);
+            const { businessIdToDelete } = action.payload;
+            delete newState[businessIdToDelete];
             return newState;
         default:
             return state;
