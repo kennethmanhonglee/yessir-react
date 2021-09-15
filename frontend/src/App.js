@@ -11,6 +11,7 @@ import CreateBusinessPage from './components/CreateBusinessPage';
 
 import * as sessionActions from "./store/session";
 import * as businessesActions from './store/businesses';
+import * as reviewsActions from './store/reviews';
 import EditBusinessPage from "./components/EditBusinessPage";
 
 function App() {
@@ -23,6 +24,10 @@ function App() {
 
   useEffect(() => {
     dispatch(businessesActions.loadBusinesses_thunk());
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(reviewsActions.loadReviews_thunk());
   }, [dispatch]);
 
   return (
