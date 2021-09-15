@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory, useParams, Redirect } from "react-router-dom";
 import { editBusiness_thunk } from "../../store/businesses";
 
 // add a thunk
@@ -28,11 +28,11 @@ const EditBusinessPage = () => {
     // if logged in but not the right user, redirect to home page
 
     if (currentUser && currentBusiness && currentBusiness.ownerId !== currentUser.id) {
-        history.push('/');
+        return (<Redirect to='/' />)
     }
 
     if (currentBusiness && !currentUser) {
-        history.push('/');
+        return (<Redirect to='/' />)
     }
 
     const updateTitle = (e) => setTitle(e.target.value);
