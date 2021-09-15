@@ -42,7 +42,7 @@ function SignupFormPage() {
                 {
                     errors.length === 0 ?
                         null
-                        : <ul>
+                        : <ul className={styles.errors}>
                             {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                         </ul>
                 }

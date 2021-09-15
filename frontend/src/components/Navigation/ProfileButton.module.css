@@ -13,3 +13,21 @@
     position: absolute;
     right: 2%;
 }
+
+.dropdown {
+    color: black;
+    list-style: none;
+}
+
+.dropdown li {
+    padding: 5px;
+}
+
+.dropdown li button {
+    cursor: pointer;
+    border: 1px solid black; /*debug use only*/
+}
+
+.dropdown li button:hover {
+    background-color: rgba(0,0,0,0.5);
+}

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from "react-router-dom";
 import { editBusiness_thunk } from "../../store/businesses";
@@ -8,8 +8,10 @@ import { editBusiness_thunk } from "../../store/businesses";
 const EditBusinessPage = () => {
     const { businessId } = useParams();
     const currentUser = useSelector((state) => state.session.user);
+    const currentBusiness = useSelector((state) => state.businesses[businessId]);
     const dispatch = useDispatch();
     const history = useHistory();
+
 
 
     const [title, setTitle] = useState('');
@@ -22,6 +24,16 @@ const EditBusinessPage = () => {
     const [longitude, setLongitude] = useState(0);
     const [errors, setErrors] = useState([]);
 
+    // if not logged in, redirect to home page
+    // if logged in but not the right user, redirect to home page
+
+    if (currentUser && currentBusiness && currentBusiness.ownerId !== currentUser.id) {
+        history.push('/');
+    }
+
+    if (currentBusiness && !currentUser) {
+        history.push('/');
+    }
 
     const updateTitle = (e) => setTitle(e.target.value);
     const updateDescription = (e) => setDescription(e.target.value);
