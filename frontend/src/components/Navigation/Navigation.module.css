@@ -45,3 +45,13 @@ button, NavLink {
 .createBusiness {
     padding-right: 70px;
 }
+
+.functionButtons {
+    position: absolute;
+    right: 0;
+}
+
+.home {
+    position: relative;
+    margin: 0 auto;
+}
