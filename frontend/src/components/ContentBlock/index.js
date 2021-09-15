@@ -16,9 +16,10 @@ const ContentBlock = () => {
     // when deleteBusinessLink is clicked
     // 1. show modal to ask are you sure
     // if they confirm, make request to backend api to delete
-    const deleteBusiness = () => {
-        const deleteMessage = dispatch(deleteBusiness_thunk);
-        alert(deleteMessage);
+    const deleteBusiness = async () => {
+        const deleteMessage = await dispatch(deleteBusiness_thunk(businessId));
+
+        console.log(deleteMessage);
 
         return history.push('/');
     }

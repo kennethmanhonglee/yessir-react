@@ -73,7 +73,7 @@ export const editBusiness_thunk = (editedBusiness) => async (dispatch) => {
 };
 
 export const deleteBusiness_thunk = (businessIdToDelete) => async (dispatch) => {
-    const response = await csrfFetch(`api/businesses/${parseInt(businessIdToDelete)}`, {
+    const response = await csrfFetch(`${window.origin}/api/businesses/${parseInt(businessIdToDelete)}`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json'
