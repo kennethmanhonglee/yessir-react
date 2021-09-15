@@ -65,10 +65,9 @@ const CreateBusinessPage = () => {
             const { id } = newBusiness;
             return history.push(`/businesses/${id}`);
         } else {
+            // come back to debug
             console.log(errors);
         }
-
-        console.log('FINISHED HANDLE SUBMIT!')
     }
 
     return (
