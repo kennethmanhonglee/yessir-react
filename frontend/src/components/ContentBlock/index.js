@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom';
 import { useHistory, useParams } from 'react-router';
+import { useDispatch, useSelector } from 'react-redux';
+
 import styles from './ContentBlock.module.css';
 import BusinessPageLocationBlock from '../BusinessPageLocationBlock';
-import { useDispatch, useSelector } from 'react-redux';
+import ReviewsBlock from '../ReviewsBlock';
 import { deleteBusiness_thunk } from '../../store/businesses';
 
 const ContentBlock = () => {
@@ -55,7 +57,9 @@ const ContentBlock = () => {
             </div>
             <hr></hr>
             <BusinessPageLocationBlock />
-            <div className={styles.reviewBlock}>Reviews</div>
+            <div className={styles.reviewBlock}>
+                <ReviewsBlock />
+            </div>
         </>
     )
 }
