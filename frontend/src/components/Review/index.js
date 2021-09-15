@@ -7,10 +7,16 @@ const Review = ({ review }) => {
     const updatedAt = new Date(review.updatedAt);
     return (
         <div className={styles.review}>
-            <h2>{currentUser.username}</h2>
-            <h4>{review.rating}</h4>
-            <p>{updatedAt.toDateString()}</p>
-            <p>{review.content}</p>
+            {
+                currentUser && (
+                    <>
+                        <h2>{currentUser.username}</h2>
+                        <h4>{review.rating}</h4>
+                        <p>{updatedAt.toDateString()}</p>
+                        <p>{review.content}</p>
+                    </>
+                )
+            }
         </div>
     )
 }
