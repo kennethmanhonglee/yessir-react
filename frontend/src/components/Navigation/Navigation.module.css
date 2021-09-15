@@ -20,7 +20,8 @@ nav {
 }
 
 .reviewBusinesses {
-    margin-left: 2%;
+    position: absolute;
+    left: 2%;
 }
 
 .signup {
@@ -44,4 +45,15 @@ button, NavLink {
 
 .createBusiness {
     padding-right: 70px;
+}
+
+.functionButtons {
+    position: absolute;
+    right: 0;
+    display: flex;
+}
+
+.home {
+    position: relative;
+    margin: 0 auto;
 }

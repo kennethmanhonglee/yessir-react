@@ -11,7 +11,10 @@ function Navigation({ isLoaded }) {
     let sessionLinks;
     if (sessionUser) {
         sessionLinks = (
-            <ProfileButton user={sessionUser} />
+            <>
+                <NavLink className={styles.createBusiness} to='/businesses/create'>Create a Business</NavLink>
+                <ProfileButton user={sessionUser} />
+            </>
         );
     } else {
         sessionLinks = (
@@ -24,14 +27,17 @@ function Navigation({ isLoaded }) {
 
     return (
         <nav>
-            <li className={styles.reviewBusinesses}>
-                <NavLink exact to="/review-page">Write a Review</NavLink> {/* create a page to suggest businesses for user to write reviews for */}
-            </li>
+            {
+                sessionUser &&
+                <li className={styles.reviewBusinesses}>
+                    <NavLink to="/review-page">Write a Review</NavLink>
+                    {/* create a page to suggest businesses for user to write reviews for */}
+                </li>
+            }
             <li className={styles.home}>
-                <NavLink to='/'><span>Yessir Logo</span></NavLink>
+                <NavLink to='/'><div>Yessir Logo</div></NavLink>
             </li>
             <li className={styles.functionButtons}>
-                <NavLink className={styles.createBusiness} to='/businesses/create'>Create a Business</NavLink>
                 {isLoaded && <div>{sessionLinks}</div>}
             </li>
         </nav>
