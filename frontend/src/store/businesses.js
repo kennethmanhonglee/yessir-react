@@ -112,8 +112,7 @@ const businessesReducer = (state = initialState, action) => {
             return newState;
         case (DELETE):
             newState = Object.assign({}, state);
-            const { businessIdToDelete } = action.payload;
-            delete newState[businessIdToDelete];
+            delete newState[action.payload]; //action.payload returns business id to be deleted
             return newState;
         default:
             return state;
