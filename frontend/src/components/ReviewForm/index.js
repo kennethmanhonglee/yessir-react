@@ -10,24 +10,26 @@ const ReviewForm = () => {
     const { businessId } = useParams();
     const businesses = useSelector((state) => state.businesses);
     const currentBusiness = businesses[businessId];
-    const [comment, setComments] = useState('');
+    const [content, setContent] = useState('');
+    const [rating, setRating] = useState(1);
     const [errors, setErrors] = useState([]);
 
     useEffect(() => {
         let newErrors = [];
-        if (!comment) errors.push('Comment cannot be empty.');
+        if (!content) errors.push('Comment cannot be empty.');
 
         setErrors(newErrors);
 
-    }, [comment]);
+    }, [content]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
         if (errors.length === 0) {
             // post review
-            console.log(comment);
-            setComments('');
+            console.log(content, rating);
+            setContent('');
+            setRating(1);
         }
     }
 
@@ -41,10 +43,22 @@ const ReviewForm = () => {
                     currentBusiness &&
                     <h2>{currentBusiness.title}</h2>
                 }
+                <label htmlFor='rating'>Rating:</label>
+                <select
+                    id='rating'
+                    onChange={(e) => setRating(e.target.value)}
+                    value={rating}
+                >
+                    <option value='1'>1</option>
+                    <option value='2'>2</option>
+                    <option value='3'>3</option>
+                    <option value='4'>4</option>
+                    <option value='5'>5</option>
+                </select>
                 <textarea
                     placeholder={placeholder}
-                    onChange={(e) => setComments(e.target.value)}
-                    value={comment}
+                    onChange={(e) => setContent(e.target.value)}
+                    value={content}
                 ></textarea>
                 <button type='submit' disabled={errors.length > 0} >Post Review</button>
             </form>
