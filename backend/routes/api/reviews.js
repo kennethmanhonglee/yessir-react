@@ -46,11 +46,11 @@ router.put('/:reviewId(\\d+)', requireAuth, restoreUser, reviewValidations, asyn
     }
 }));
 
-router.delete('/:reviewId(\\d+)', requireAuth, asyncHandler(async (req, res) => {
+router.delete('/:reviewId(\\d+)', requireAuth, restoreUser, asyncHandler(async (req, res) => {
     const { reviewId } = req.params;
     const reviewToDelete = await Review.findByPk(reviewId);
 
-    if (reviewToDelete) {
+    if (reviewToDelete && req.user.id === reviewToDelete.userId) {
         await reviewToDelete.destroy();
         return res.status(301).json('deleted');
     } else {
