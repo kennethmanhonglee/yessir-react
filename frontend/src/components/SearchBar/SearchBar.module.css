@@ -1,0 +1,19 @@
+.linkIcon {
+    padding: 50px;
+}
+
+.searchInput {
+    /* background-color: red; for debugging */
+    /* border: 1px solid grey; for debugging */
+    width: 15vw;
+    height: 40px;
+    outline: none;
+}
+
+.searchButton {
+    background-color: #d32323;
+    height: 40px;
+    width: 60px;
+    border-radius: 10%;
+    position: relative;
+}
