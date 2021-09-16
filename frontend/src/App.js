@@ -14,6 +14,7 @@ import * as businessesActions from './store/businesses';
 import * as reviewsActions from './store/reviews';
 import * as usersActions from './store/users';
 import EditBusinessPage from "./components/EditBusinessPage";
+import EditReviewPage from "./components/EditReviewPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -57,6 +58,9 @@ function App() {
           </Route>
           <Route path='/businesses/:businessId'>
             <BusinessPage />
+          </Route>
+          <Route path='/reviews/:reviewId'>
+            <EditReviewPage />
           </Route>
           <Route path='/'>
             The page you are looking for is not found.
