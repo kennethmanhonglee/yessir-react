@@ -1,22 +1,23 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
-import { addReview_thunk } from "../../store/reviews";
+import { useSelector, useDispatch } from "react-redux";
+import { useState, useEffect } from "react";
 
-import styles from './ReviewForm.module.css';
+import { editReview_thunk } from "../../store/reviews";
+import styles from './EditReviewPage.module.css';
 
-const placeholder = 'WOW! This place is so cool, I love their food here...'
 
-const ReviewForm = () => {
-    const { businessId } = useParams();
+const EditReviewPage = () => {
+    const { reviewId } = useParams();
     const businesses = useSelector((state) => state.businesses);
-    const currentBusiness = businesses[businessId];
     const currentUser = useSelector((state) => state.session.user);
+    const currentReview = useSelector((state) => state.reviews[reviewId]);
     const dispatch = useDispatch();
     const history = useHistory();
     const [content, setContent] = useState('');
     const [rating, setRating] = useState(1);
     const [errors, setErrors] = useState([]);
+
+    const placeholder = 'Changed my mind about this business...';
 
     useEffect(() => {
         let newErrors = [];
@@ -26,23 +27,33 @@ const ReviewForm = () => {
 
     }, [content]);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        const currentBusiness = businesses[currentReview?.businessId];
 
         if (errors.length === 0) {
             // post review - write thunk, write backend route
             const reviewObj = {
+                id: reviewId,
                 userId: currentUser.id,
-                businessId,
+                businessId: currentBusiness.id,
                 rating,
                 content
             }
 
             // call thunk to dispatch, then redirect to business page
-            dispatch(addReview_thunk(reviewObj));
-            return history.push(`/businesses/${businessId}`);
+            await dispatch(editReview_thunk(reviewObj));
+            return history.push(`/businesses/${currentBusiness.id}`);
         }
     }
+
+    const reviewTitle = (
+        <>
+            <h2>
+                {businesses[currentReview?.businessId]?.title}
+            </h2>
+        </>
+    )
 
     return (
         <div className={styles.formDiv}>
@@ -50,10 +61,7 @@ const ReviewForm = () => {
                 className={styles.reviewForm}
                 onSubmit={handleSubmit}
             >
-                {
-                    currentBusiness &&
-                    <h2>{currentBusiness.title}</h2>
-                }
+                {reviewTitle}
                 <label htmlFor='rating'>Rating:</label>
                 <select
                     id='rating'
@@ -77,4 +85,4 @@ const ReviewForm = () => {
     )
 };
 
-export default ReviewForm;
+export default EditReviewPage;

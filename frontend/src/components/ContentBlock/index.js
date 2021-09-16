@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom';
 import { useHistory, useParams } from 'react-router';
+import { useDispatch, useSelector } from 'react-redux';
+
 import styles from './ContentBlock.module.css';
 import BusinessPageLocationBlock from '../BusinessPageLocationBlock';
-import { useDispatch, useSelector } from 'react-redux';
+import ReviewsBlock from '../ReviewsBlock';
 import { deleteBusiness_thunk } from '../../store/businesses';
 
 const ContentBlock = () => {
@@ -12,10 +14,6 @@ const ContentBlock = () => {
     const dispatch = useDispatch();
     const history = useHistory();
 
-
-    // when deleteBusinessLink is clicked
-    // 1. show modal to ask are you sure
-    // if they confirm, make request to backend api to delete
     const deleteBusiness = async () => {
         const deleteMessage = await dispatch(deleteBusiness_thunk(businessId));
 
@@ -55,7 +53,9 @@ const ContentBlock = () => {
             </div>
             <hr></hr>
             <BusinessPageLocationBlock />
-            <div className={styles.reviewBlock}>Reviews</div>
+            <div>
+                <ReviewsBlock />
+            </div>
         </>
     )
 }

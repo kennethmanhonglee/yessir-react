@@ -8,10 +8,12 @@ const router = express.Router();
 const sessionRouter = require('./session');
 const usersRouter = require('./users');
 const businessRouter = require('./businesses');
+const reviewsRouter = require('./reviews');
 
 
 router.use('/session', sessionRouter);
 router.use('/users', usersRouter);
 router.use('/businesses', businessRouter);
+router.use('/reviews', reviewsRouter);
 
 module.exports = router;

@@ -1,8 +1,8 @@
-const { Business } = require('../../db/models');
+const express = require('express');
 const asyncHandler = require('express-async-handler');
 const { check, validationResult } = require('express-validator');
 
-const express = require('express');
+const { Business, Review } = require('../../db/models');
 const { requireAuth } = require('../../utils/auth');
 
 const router = express.Router();
@@ -37,12 +37,22 @@ const businessValidations = [
         .withMessage('Must have a longitude'),
 ];
 
+const reviewValidations = [
+    check('rating')
+        .exists()
+        .withMessage('Review must have a rating.')
+        .isInt({ min: 1, max: 5 })
+        .withMessage('Rating must be an integer between 1 and 5'),
+    check('content')
+        .notEmpty()
+        .withMessage('Review must include a comment.')
+];
+
 router.get('/', asyncHandler(async (req, res) => {
     const response = await Business.findAll();
     res.json(response);
 }));
 
-// need csrf, cant test until implement login
 router.post('/', requireAuth, businessValidations, asyncHandler(async (req, res) => {
     const { ownerId, title, description, address, city, state, zipCode, latitude, longitude } = req.body;
 
@@ -61,7 +71,7 @@ router.post('/', requireAuth, businessValidations, asyncHandler(async (req, res)
             longitude
         });
 
-        res.json(newBusiness);
+        res.status(201).json(newBusiness);
     } else {
         // take out errors msgs from validationErrors.errors array
         const errors = validationErrors.errors.map((error) => error.msg);
@@ -69,7 +79,6 @@ router.post('/', requireAuth, businessValidations, asyncHandler(async (req, res)
     }
 }));
 
-// probably need csrf too
 router.put('/:businessId(\\d+)', requireAuth, businessValidations, asyncHandler(async (req, res) => {
     const { id, ownerId, title, description, address, city, state, zipCode, latitude, longitude } = req.body;
     const validationErrors = validationResult(req);
@@ -111,5 +120,26 @@ router.delete('/:businessId(\\d+)', requireAuth, asyncHandler(async (req, res) =
         return res.status(404).json('not found');
     }
 }));
+
+router.post('/:businessId(\\d+)/reviews', reviewValidations, requireAuth, asyncHandler(async (req, res) => {
+    const validationErrors = validationResult(req);
+    const { rating, content, userId } = req.body; //send userId too
+    const { businessId } = req.params;
+
+    if (validationErrors.isEmpty()) {
+        const newReview = await Review.create({
+            userId,
+            businessId,
+            rating,
+            content
+        });
+
+        res.status(201).json(newReview);
+    } else {
+        const errors = validationErrors.errors.map((error) => error.msg);
+        res.status(406).json(errors);
+    }
+}))
+
 
 module.exports = router;

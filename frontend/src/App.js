@@ -11,7 +11,10 @@ import CreateBusinessPage from './components/CreateBusinessPage';
 
 import * as sessionActions from "./store/session";
 import * as businessesActions from './store/businesses';
+import * as reviewsActions from './store/reviews';
+import * as usersActions from './store/users';
 import EditBusinessPage from "./components/EditBusinessPage";
+import EditReviewPage from "./components/EditReviewPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -23,6 +26,14 @@ function App() {
 
   useEffect(() => {
     dispatch(businessesActions.loadBusinesses_thunk());
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(reviewsActions.loadReviews_thunk());
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(usersActions.loadUsers_thunk());
   }, [dispatch]);
 
   return (
@@ -47,6 +58,9 @@ function App() {
           </Route>
           <Route path='/businesses/:businessId'>
             <BusinessPage />
+          </Route>
+          <Route path='/reviews/:reviewId/edit'>
+            <EditReviewPage />
           </Route>
           <Route path='/'>
             The page you are looking for is not found.
