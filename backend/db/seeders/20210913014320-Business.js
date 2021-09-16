@@ -15,8 +15,8 @@ module.exports = {
       }], {});
     */
     const fakerBusinessesArrays = [];
-    for (let i = 0; i < 20; i++) {
-      let amountUsers = 23; //22 faker users + 1 demo user
+    for (let i = 0; i < 50; i++) {
+      let amountUsers = 53; //52 faker users + 1 demo user
       let ownerId = Math.floor(Math.random() * amountUsers) + 1; //+1 to get 1-max
       let title = faker.company.companyName();
       let description = faker.commerce.productDescription();

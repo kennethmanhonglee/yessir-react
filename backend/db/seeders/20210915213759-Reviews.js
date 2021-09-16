@@ -15,10 +15,10 @@ module.exports = {
       }], {});
     */
     const fakerReviewsArray = [];
-    for (let i = 0; i < 100; i++) {
-      let amountUsers = 23; //22 faker users + 1 demo user
+    for (let i = 0; i < 300; i++) {
+      let amountUsers = 53; //52 faker users + 1 demo user
       let userId = Math.floor(Math.random() * amountUsers) + 1;
-      let amountBusinesses = 20; //22 faker businesses
+      let amountBusinesses = 50; //52 faker businesses
       let businessId = Math.floor(Math.random() * amountBusinesses) + 1;
       let rating = Math.floor(Math.random() * 5) + 1; //random number from 1-5
       let content = faker.commerce.productDescription();
