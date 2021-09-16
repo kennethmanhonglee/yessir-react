@@ -16,7 +16,7 @@ const ReviewForm = () => {
 
     useEffect(() => {
         let newErrors = [];
-        if (!content) errors.push('Comment cannot be empty.');
+        if (!content) newErrors.push('Comment cannot be empty.');
 
         setErrors(newErrors);
 
