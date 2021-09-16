@@ -3,7 +3,7 @@ const asyncHandler = require('express-async-handler');
 const { check, validationResult } = require('express-validator');
 
 const { Business, Review } = require('../../db/models');
-const { requireAuth } = require('../../utils/auth');
+const { requireAuth, restoreUser } = require('../../utils/auth');
 
 const router = express.Router();
 
@@ -79,14 +79,14 @@ router.post('/', requireAuth, businessValidations, asyncHandler(async (req, res)
     }
 }));
 
-router.put('/:businessId(\\d+)', requireAuth, businessValidations, asyncHandler(async (req, res) => {
-    const { id, ownerId, title, description, address, city, state, zipCode, latitude, longitude } = req.body;
+router.put('/:businessId(\\d+)', requireAuth, restoreUser, businessValidations, asyncHandler(async (req, res) => {
+    const { id, title, description, address, city, state, zipCode, latitude, longitude } = req.body;
+    const { id: ownerId } = req.user;
     const validationErrors = validationResult(req);
     if (validationErrors.isEmpty()) {
         const business = await Business.findByPk(id);
-        if (business) {
+        if (business && business.ownerId === ownerId) {
             await business.update({
-                ownerId,
                 title,
                 description,
                 address,
@@ -102,18 +102,18 @@ router.put('/:businessId(\\d+)', requireAuth, businessValidations, asyncHandler(
         }
     } else {
         const errors = validationErrors.errors.map((error) => error.msg);
-        res.status(404).json('');
+        res.status(404).json(errors);
 
     }
 }));
 
-router.delete('/:businessId(\\d+)', requireAuth, asyncHandler(async (req, res) => {
+router.delete('/:businessId(\\d+)', requireAuth, restoreUser, asyncHandler(async (req, res) => {
     const { businessId } = req.params;
-
+    const { id: ownerId } = req.user;
     const businessToDelete = await Business.findByPk(businessId);
 
     // testing, need to make thunk first
-    if (businessToDelete) {
+    if (businessToDelete && ownerId === businessToDelete.ownerId) {
         await businessToDelete.destroy();
         return res.status(301).json('deleted');
     } else {

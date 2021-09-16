@@ -62,9 +62,7 @@ const EditBusinessPage = () => {
         e.preventDefault();
         validateBusiness();
 
-        console.log('this is the errors array', errors)
         if (errors.length === 0) {
-            console.log('hello i am in side of if')
             const business = {
                 id: businessId,
                 ownerId: currentUser.id,
