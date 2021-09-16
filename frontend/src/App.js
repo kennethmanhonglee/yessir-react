@@ -59,7 +59,7 @@ function App() {
           <Route path='/businesses/:businessId'>
             <BusinessPage />
           </Route>
-          <Route path='/reviews/:reviewId'>
+          <Route path='/reviews/:reviewId/edit'>
             <EditReviewPage />
           </Route>
           <Route path='/'>

@@ -7,9 +7,7 @@ import ContentBlock from '../ContentBlock'
 
 const BusinessPage = () => {
     const businesses = useSelector((state) => state.businesses);
-    console.log('BUSINESSES', businesses);
     const { businessId } = useParams();
-    console.log('BUSINESSES IDIDIDIDIDIDID', businessId);
     const history = useHistory();
 
     // check if businesses has things, but businessId does not exist
