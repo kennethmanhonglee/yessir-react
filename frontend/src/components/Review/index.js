@@ -9,7 +9,7 @@ const Review = ({ review }) => {
     return (
         <div className={styles.review}>
             {
-                currentUser && users[review.userId] && (
+                users[review.userId] && (
                     <>
                         <h2>{users[review.userId].username}</h2>
                         <h4>{review.rating}</h4>
@@ -22,7 +22,7 @@ const Review = ({ review }) => {
                 currentUser && currentUser.id === review.userId &&
                 (
                     <>
-                        <Link to={`/reviews/${review.id}/edit`}>Edit Review</Link>
+                        <Link className={styles.editReviewButton} to={`/reviews/${review.id}/edit`}>Edit Review</Link>
                     </>
                 )
             }

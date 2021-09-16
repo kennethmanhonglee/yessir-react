@@ -14,10 +14,6 @@ const ContentBlock = () => {
     const dispatch = useDispatch();
     const history = useHistory();
 
-
-    // when deleteBusinessLink is clicked
-    // 1. show modal to ask are you sure
-    // if they confirm, make request to backend api to delete
     const deleteBusiness = async () => {
         const deleteMessage = await dispatch(deleteBusiness_thunk(businessId));
 
@@ -57,7 +53,7 @@ const ContentBlock = () => {
             </div>
             <hr></hr>
             <BusinessPageLocationBlock />
-            <div className={styles.reviewBlock}>
+            <div>
                 <ReviewsBlock />
             </div>
         </>
