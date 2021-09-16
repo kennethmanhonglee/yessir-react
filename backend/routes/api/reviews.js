@@ -3,7 +3,7 @@ const asyncHandler = require('express-async-handler');
 const { check, validationResult } = require('express-validator');
 
 const { Review } = require('../../db/models');
-const { requireAuth } = require('../../utils/auth');
+const { requireAuth, restoreUser } = require('../../utils/auth');
 
 const router = express.Router();
 
@@ -24,20 +24,22 @@ router.get('/', asyncHandler(async (req, res) => {
     res.json(reviews);
 }));
 
-router.put('/:reviewId(\\d+)', requireAuth, reviewValidations, asyncHandler(async (req, res) => {
+router.put('/:reviewId(\\d+)', requireAuth, restoreUser, reviewValidations, asyncHandler(async (req, res) => {
     const validationErrors = validationResult(req);
     const { rating, content, userId } = req.body; //send userId too
     const { reviewId } = req.params;
 
     if (validationErrors.isEmpty()) {
         const reviewToUpdate = await Review.findByPk(reviewId);
-        await reviewToUpdate.update({
-            userId,
-            rating,
-            content
-        });
+        if (req.user.id === reviewToUpdate.userId) {
+            await reviewToUpdate.update({
+                userId,
+                rating,
+                content
+            });
 
-        res.json(reviewToUpdate);
+            res.json(reviewToUpdate);
+        }
     } else {
         const errors = validationErrors.errors.map((error) => error.msg);
         res.status(403).json(errors);
