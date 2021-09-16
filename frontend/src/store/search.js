@@ -34,7 +34,9 @@ const searchReducer = (state = initialState, action) => {
         case (SEARCH):
             newState = Object.assign({}, state);
             let { params, businessList } = action.payload;
-            newState[params.searchParamsString] = businessList;
+            params.searchParamsString ?
+                newState[params.searchParamsString] = businessList
+                : newState[params.address] = businessList
             return newState;
         default:
             return state;

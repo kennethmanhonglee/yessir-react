@@ -3,10 +3,11 @@ import { useState } from "react";
 import { useDispatch } from 'react-redux';
 
 import { searchBusinesses_thunk } from '../../store/search';
-import SearchPage from '../SearchPage';
 import styles from './SearchBar.module.css'
+import { useHistory } from 'react-router-dom';
 
 const SearchBar = () => {
+    const history = useHistory();
     const dispatch = useDispatch();
     const [searchParamsString, setSearchParamsString] = useState('');
     const [address, setAddress] = useState('');
@@ -18,8 +19,9 @@ const SearchBar = () => {
             address
         }
 
-        const businessList = await dispatch(searchBusinesses_thunk(params));
-        return (<SearchPage />);
+        await dispatch(searchBusinesses_thunk(params));
+
+        return history.push('/search');
     }
     return (
         <form

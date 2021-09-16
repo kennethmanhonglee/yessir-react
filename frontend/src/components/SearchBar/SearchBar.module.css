@@ -3,8 +3,6 @@
 }
 
 .searchInput {
-    /* background-color: red; for debugging */
-    /* border: 1px solid grey; for debugging */
     width: 15vw;
     height: 40px;
     outline: none;
