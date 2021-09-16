@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
+
 import styles from './Home.module.css';
-import { FaSearch } from 'react-icons/fa'
+import SearchBar from "../SearchBar";
 
 
 const Home = () => {
@@ -11,9 +12,8 @@ const Home = () => {
                     <Link to='/'>YESSIR!</Link> { /* placeholder link, change to logo later */}
                 </div>
                 <div className={styles.searchBar}>
-                    <input className={styles.searchInput} type='text' placeholder='Find your next spot' />
-                    <input className={styles.searchInput} type='text' placeholder='address, neighborhood, city, state, or zip' />
-                    <button className={styles.searchButton}><FaSearch style={{ color: 'white' }} /></button>
+                    {/* make into one component */}
+                    <SearchBar />
                 </div>
             </div>
             <div className={styles.footer}>

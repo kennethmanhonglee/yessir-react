@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { deleteReview_thunk } from "../../store/reviews";
 import styles from './Review.module.css';
 
@@ -7,7 +7,6 @@ const Review = ({ review }) => {
     const currentUser = useSelector((state) => state.session.user);
     const users = useSelector((state) => state.users);
     const dispatch = useDispatch();
-    const history = useHistory();
     const updatedAt = new Date(review.updatedAt);
 
 

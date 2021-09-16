@@ -1,0 +1,17 @@
+.linkIcon {
+    padding: 50px;
+}
+
+.searchInput {
+    width: 15vw;
+    height: 40px;
+    outline: none;
+}
+
+.searchButton {
+    background-color: #d32323;
+    height: 40px;
+    width: 60px;
+    border-radius: 10%;
+    position: relative;
+}
