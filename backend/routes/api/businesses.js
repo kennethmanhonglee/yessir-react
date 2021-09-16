@@ -3,7 +3,7 @@ const asyncHandler = require('express-async-handler');
 const { check, validationResult } = require('express-validator');
 
 const { Business, Review } = require('../../db/models');
-const { requireAuth } = require('../../utils/auth');
+const { requireAuth, restoreUser } = require('../../utils/auth');
 
 const router = express.Router();
 
@@ -79,8 +79,9 @@ router.post('/', requireAuth, businessValidations, asyncHandler(async (req, res)
     }
 }));
 
-router.put('/:businessId(\\d+)', requireAuth, businessValidations, asyncHandler(async (req, res) => {
-    const { id, ownerId, title, description, address, city, state, zipCode, latitude, longitude } = req.body;
+router.put('/:businessId(\\d+)', requireAuth, restoreUser, businessValidations, asyncHandler(async (req, res) => {
+    const { id, title, description, address, city, state, zipCode, latitude, longitude } = req.body;
+    const { id: ownerId } = req.user;
     const validationErrors = validationResult(req);
     if (validationErrors.isEmpty()) {
         const business = await Business.findByPk(id);
@@ -106,9 +107,9 @@ router.put('/:businessId(\\d+)', requireAuth, businessValidations, asyncHandler(
     }
 }));
 
-router.delete('/:businessId(\\d+)', requireAuth, asyncHandler(async (req, res) => {
+router.delete('/:businessId(\\d+)', requireAuth, restoreUser, asyncHandler(async (req, res) => {
     const { businessId } = req.params;
-    const { id: ownerId } = req.body;
+    const { id: ownerId } = req.user;
     const businessToDelete = await Business.findByPk(businessId);
 
     // testing, need to make thunk first
