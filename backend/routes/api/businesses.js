@@ -71,7 +71,7 @@ router.post('/', requireAuth, businessValidations, asyncHandler(async (req, res)
             longitude
         });
 
-        res.json(newBusiness);
+        res.status(201).json(newBusiness);
     } else {
         // take out errors msgs from validationErrors.errors array
         const errors = validationErrors.errors.map((error) => error.msg);
@@ -134,10 +134,10 @@ router.post('/:businessId(\\d+)/reviews', reviewValidations, requireAuth, asyncH
             content
         });
 
-        res.json(newReview);
+        res.status(201).json(newReview);
     } else {
         const errors = validationErrors.errors.map((error) => error.msg);
-        res.status(403).json(errors);
+        res.status(406).json(errors);
     }
 }))
 
