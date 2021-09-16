@@ -9,11 +9,13 @@ const sessionRouter = require('./session');
 const usersRouter = require('./users');
 const businessRouter = require('./businesses');
 const reviewsRouter = require('./reviews');
+const searchRouter = require('./search');
 
 
 router.use('/session', sessionRouter);
 router.use('/users', usersRouter);
 router.use('/businesses', businessRouter);
 router.use('/reviews', reviewsRouter);
+router.use('/search', searchRouter);
 
 module.exports = router;

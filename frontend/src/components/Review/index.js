@@ -7,7 +7,6 @@ const Review = ({ review }) => {
     const currentUser = useSelector((state) => state.session.user);
     const users = useSelector((state) => state.users);
     const dispatch = useDispatch();
-    const history = useHistory();
     const updatedAt = new Date(review.updatedAt);
 
 
