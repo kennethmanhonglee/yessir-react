@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { useParams } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams, useHistory } from "react-router-dom";
+import { addReview_thunk } from "../../store/reviews";
 
 import styles from './ReviewForm.module.css';
 
@@ -10,6 +11,9 @@ const ReviewForm = () => {
     const { businessId } = useParams();
     const businesses = useSelector((state) => state.businesses);
     const currentBusiness = businesses[businessId];
+    const currentUser = useSelector((state) => state.session.user);
+    const dispatch = useDispatch();
+    const history = useHistory();
     const [content, setContent] = useState('');
     const [rating, setRating] = useState(1);
     const [errors, setErrors] = useState([]);
@@ -27,9 +31,16 @@ const ReviewForm = () => {
 
         if (errors.length === 0) {
             // post review - write thunk, write backend route
-            console.log(content, rating);
-            setContent('');
-            setRating(1);
+            const reviewObj = {
+                userId: currentUser.id,
+                businessId,
+                rating,
+                content
+            }
+
+            // call thunk to dispatch, then redirect to business page
+            dispatch(addReview_thunk(reviewObj));
+            return history.push(`/businesses/${businessId}`);
         }
     }
 
