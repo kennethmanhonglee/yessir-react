@@ -24,7 +24,7 @@ router.get('/', asyncHandler(async (req, res) => {
     res.json(reviews);
 }));
 
-router.put('/:reviewId(\\d+)', asyncHandler(async (req, res) => {
+router.put('/:reviewId(\\d+)', requireAuth, reviewValidations, asyncHandler(async (req, res) => {
     const validationErrors = validationResult(req);
     const { rating, content, userId } = req.body; //send userId too
     const { reviewId } = req.params;
@@ -41,6 +41,18 @@ router.put('/:reviewId(\\d+)', asyncHandler(async (req, res) => {
     } else {
         const errors = validationErrors.errors.map((error) => error.msg);
         res.status(403).json(errors);
+    }
+}));
+
+router.delete('/:reviewId(\\d+)', requireAuth, asyncHandler(async (req, res) => {
+    const { reviewId } = req.params;
+    const reviewToDelete = await Review.findByPk(reviewId);
+
+    if (reviewToDelete) {
+        await reviewToDelete.destroy();
+        return res.status(301).json('deleted');
+    } else {
+        return res.status(404).json('not found');
     }
 }));
 
