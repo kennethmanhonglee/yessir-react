@@ -37,6 +37,7 @@ function SignupFormPage() {
         <div className={styles.formDiv}>
             <h2 className={styles.header}>Sign up for Yessir!</h2>
             <form
+                className={styles.form}
                 onSubmit={handleSubmit}
             >
                 {
