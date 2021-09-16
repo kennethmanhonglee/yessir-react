@@ -1,8 +1,10 @@
+import { editBusiness_thunk } from "./businesses";
 import { csrfFetch } from "./csrf";
 
 //types
 const LOAD = 'reviews/loadReviews';
 const ADD = 'reviews/addReview';
+const EDIT = 'reviews/editReview';
 
 // action creators
 const loadReviews_actionCreator = (list) => {
@@ -15,6 +17,13 @@ const loadReviews_actionCreator = (list) => {
 const addReview_actionCreator = (review) => {
     return {
         type: ADD,
+        payload: review
+    }
+}
+
+const editReview_actionCreator = (review) => {
+    return {
+        type: EDIT,
         payload: review
     }
 }
@@ -45,6 +54,24 @@ export const addReview_thunk = (review) => async (dispatch) => {
     return;
 }
 
+export const editReview_thunk = (review) => async (dispatch) => {
+    const response = await csrfFetch(`/api/reviews/${review.id}`, {
+        method: 'PUT',
+        header: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(review)
+    });
+
+    if (response.ok) {
+        const editedReview = await response.json();
+        dispatch(editReview_actionCreator(editedReview));
+
+        return editedReview;
+    }
+    return;
+}
+
 const initialState = {};
 
 const reviewsReducer = (state = initialState, action) => {
@@ -57,6 +84,11 @@ const reviewsReducer = (state = initialState, action) => {
             });
             return newState;
         case (ADD):
+            newState = Object.assign({}, state);
+            newReview = action.payload;
+            newState[newReview.id] = newReview;
+            return newState;
+        case (EDIT):
             newState = Object.assign({}, state);
             newReview = action.payload;
             newState[newReview.id] = newReview;
