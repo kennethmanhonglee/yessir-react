@@ -28,10 +28,10 @@ const editBusiness_actionCreator = (editedBusiness) => {
     }
 }
 
-const deleteBusiness_actionCreator = (businessIdToDelete) => {
+const deleteBusiness_actionCreator = (businessToDelete) => {
     return {
         type: DELETE,
-        payload: businessIdToDelete
+        payload: businessToDelete
     }
 }
 
@@ -73,17 +73,18 @@ export const editBusiness_thunk = (editedBusiness) => async (dispatch) => {
     return newBusiness;
 };
 
-export const deleteBusiness_thunk = (businessIdToDelete) => async (dispatch) => {
-    const response = await csrfFetch(`${window.origin}/api/businesses/${parseInt(businessIdToDelete)}`, {
+export const deleteBusiness_thunk = ({ business: businessToDelete, user }) => async (dispatch) => {
+    const response = await csrfFetch(`${window.origin}/api/businesses/${parseInt(businessToDelete.id)}`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json'
-        }
+        },
+        body: JSON.stringify(user)
     });
 
     const deleteResponse = await response.json();
     if (deleteResponse === 'deleted') {
-        await dispatch(deleteBusiness_actionCreator(businessIdToDelete));
+        await dispatch(deleteBusiness_actionCreator(businessToDelete));
         return 'delete successful';
     } else {
         return 'delete unsuccessful';
@@ -113,7 +114,7 @@ const businessesReducer = (state = initialState, action) => {
             return newState;
         case (DELETE):
             newState = Object.assign({}, state);
-            delete newState[action.payload]; //action.payload returns business id to be deleted
+            delete newState[action.payload.id];
             return newState;
         default:
             return state;

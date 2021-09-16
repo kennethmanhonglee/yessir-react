@@ -15,7 +15,8 @@ const ContentBlock = () => {
     const history = useHistory();
 
     const deleteBusiness = async () => {
-        const deleteMessage = await dispatch(deleteBusiness_thunk(businessId));
+        const payload = { business, user };
+        const deleteMessage = await dispatch(deleteBusiness_thunk(payload));
 
         console.log(deleteMessage);
 

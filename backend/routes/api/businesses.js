@@ -108,11 +108,11 @@ router.put('/:businessId(\\d+)', requireAuth, businessValidations, asyncHandler(
 
 router.delete('/:businessId(\\d+)', requireAuth, asyncHandler(async (req, res) => {
     const { businessId } = req.params;
-
+    const { id: ownerId } = req.body;
     const businessToDelete = await Business.findByPk(businessId);
 
     // testing, need to make thunk first
-    if (businessToDelete) {
+    if (businessToDelete && ownerId === businessToDelete.ownerId) {
         await businessToDelete.destroy();
         return res.status(301).json('deleted');
     } else {
