@@ -84,9 +84,8 @@ router.put('/:businessId(\\d+)', requireAuth, businessValidations, asyncHandler(
     const validationErrors = validationResult(req);
     if (validationErrors.isEmpty()) {
         const business = await Business.findByPk(id);
-        if (business) {
+        if (business && business.ownerId === ownerId) {
             await business.update({
-                ownerId,
                 title,
                 description,
                 address,
@@ -102,7 +101,7 @@ router.put('/:businessId(\\d+)', requireAuth, businessValidations, asyncHandler(
         }
     } else {
         const errors = validationErrors.errors.map((error) => error.msg);
-        res.status(404).json('');
+        res.status(404).json(errors);
 
     }
 }));
