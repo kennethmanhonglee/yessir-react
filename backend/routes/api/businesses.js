@@ -121,7 +121,7 @@ router.delete('/:businessId(\\d+)', requireAuth, asyncHandler(async (req, res) =
     }
 }));
 
-router.post('/:businessId(\\d+)/reviews', reviewValidations, asyncHandler(async (req, res) => {
+router.post('/:businessId(\\d+)/reviews', reviewValidations, requireAuth, asyncHandler(async (req, res) => {
     const validationErrors = validationResult(req);
     const { rating, content, userId } = req.body; //send userId too
     const { businessId } = req.params;
