@@ -8,13 +8,14 @@ const Home = () => {
     <>
       <div className={styles.main}>
         <div className={styles.linkIcon}>
-          <Link to="/">YESSIR!</Link>{" "}
-          {/* placeholder link, change to logo later */}
+          <Link to="/">
+            <div className={styles.header}>
+              <h1>Yessir!</h1>
+            </div>
+          </Link>
         </div>
-        <div className={styles.searchBar}>
-          {/* make into one component */}
-          <SearchBar />
-        </div>
+        {/* make into one component */}
+        <SearchBar />
       </div>
       <div className={styles.footer}>
         <div className={styles.github}>

@@ -1,5 +1,5 @@
 .main {
-  height: 70vh;
+  height: 80vh;
   width: 100%;
   border: 1px solid black; /* for debugging*/
   display: flex;
@@ -7,6 +7,12 @@
   justify-content: center;
   align-items: center;
   background-color: beige; /*placeholder - change to random image*/
+}
+
+.linkIcon {
+  display: flex;
+  align-items: flex-end;
+  height: 50%;
 }
 
 .footer {
@@ -23,4 +29,8 @@
 
 .github {
   margin-top: 0.5%;
+}
+
+.header {
+  margin: 50px;
 }
