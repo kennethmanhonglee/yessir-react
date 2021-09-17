@@ -26,20 +26,21 @@ function Navigation({ isLoaded }) {
     }
     return (
         <nav>
-            {
+            {/*             
+                add feature later
                 sessionUser &&
                 <li className={styles.reviewBusinesses}>
                     <NavLink to="/review-page">Write a Review</NavLink>
-                    {/* create a page to suggest businesses for user to write reviews for */}
+                    create a page to suggest businesses for user to write reviews for
                 </li>
-            }
-            <li className={styles.home}>
+            */}
+            < li className={styles.home} >
                 <NavLink to='/'><div>Yessir Logo</div></NavLink>
-            </li>
+            </li >
             <li className={styles.functionButtons}>
                 {isLoaded && <div>{sessionLinks}</div>}
             </li>
-        </nav>
+        </nav >
     );
 }
 

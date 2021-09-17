@@ -33,6 +33,15 @@ function SignupFormPage() {
         return setErrors(['Confirm Password field must be the same as the Password field']);
     };
 
+    const demoUser = () => {
+        setErrors([]);
+        return dispatch(sessionActions.login_thunk({ credential: 'Demo-lition', password: 'password' }))
+            .catch(async (res) => {
+                const data = await res.json();
+                if (data && data.errors) setErrors(data.errors);
+            });
+    }
+
     return (
         <div className={styles.formDiv}>
             <h2 className={styles.header}>Sign up for Yessir!</h2>
@@ -53,6 +62,7 @@ function SignupFormPage() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
+                    className={styles.input}
                 />
                 <input
                     placeholder='Username'
@@ -60,6 +70,7 @@ function SignupFormPage() {
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                     required
+                    className={styles.input}
                 />
                 <input
                     placeholder='Password'
@@ -67,6 +78,7 @@ function SignupFormPage() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
+                    className={styles.input}
                 />
                 <input
                     placeholder='Confirm Password'
@@ -74,6 +86,7 @@ function SignupFormPage() {
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     required
+                    className={styles.input}
                 />
                 <button className={styles.submitButton} type="submit">Sign Up</button>
                 <div className={styles.loginDiv}>
@@ -87,9 +100,7 @@ function SignupFormPage() {
                     }
                 </div>
             </form >
-
-            <div>
-            </div>
+            <button className={styles.demo} onClick={demoUser}>Demo User</button>
         </div >
     );
 }

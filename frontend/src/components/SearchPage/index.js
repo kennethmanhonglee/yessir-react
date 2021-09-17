@@ -21,7 +21,7 @@ const SearchPage = () => {
             address: paramsArray[1]
         }
         dispatch(searchBusinesses_thunk(params));
-    }, []);
+    }, [dispatch, paramsArray]);
 
     if (!searchState) {
         return (
@@ -32,8 +32,8 @@ const SearchPage = () => {
         return (
             <div className={styles.businessList}>
                 {businessList?.map((business) => (
-                    <div className={styles.business}>
-                        <Link key={business.id} to={`/businesses/${business.id}`}>
+                    <div className={styles.business} key={business.id}>
+                        <Link to={`/businesses/${business.id}`}>
                             <h2>{business.title}</h2>
                             <p>{business.description}</p>
                             <p>{`${business.address}, ${business.city}, ${business.state} ${business.zipCode}`}</p>

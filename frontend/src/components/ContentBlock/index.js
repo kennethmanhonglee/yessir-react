@@ -16,7 +16,7 @@ const ContentBlock = () => {
 
     const deleteBusiness = async () => {
         const payload = { business, user };
-        const deleteMessage = await dispatch(deleteBusiness_thunk(payload));
+        await dispatch(deleteBusiness_thunk(payload));
 
         return history.push('/');
     }

@@ -1,13 +1,11 @@
 import { FaSearch } from 'react-icons/fa'
 import { useState } from "react";
-import { useDispatch } from 'react-redux';
 
 import styles from './SearchBar.module.css'
 import { useHistory } from 'react-router-dom';
 
 const SearchBar = () => {
     const history = useHistory();
-    const dispatch = useDispatch();
     const [searchParamsString, setSearchParamsString] = useState('');
     const [address, setAddress] = useState('');
 

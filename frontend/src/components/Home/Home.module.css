@@ -1,10 +1,27 @@
 .main {
-    height: 70vh;
-    width: 100%;
-    border: 1px solid black; /* for debugging*/
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: beige; /*placeholder - change to random image*/
+  height: 70vh;
+  width: 100%;
+  border: 1px solid black; /* for debugging*/
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: beige; /*placeholder - change to random image*/
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  box-sizing: border-box;
+  display: flex;
+  min-height: 75px;
+  max-height: 75px;
+  width: 100%;
+  background-color: #f4f4f4;
+  padding: 5px 20px;
+  justify-content: center;
+}
+
+.github {
+  margin-top: 1.5%;
 }

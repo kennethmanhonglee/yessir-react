@@ -17,8 +17,8 @@ const Home = () => {
                 </div>
             </div>
             <div className={styles.footer}>
-                <div className={styles.about}>
-                    Github
+                <div className={styles.github}>
+                    <a href='https://github.com/kennethmanhonglee'>GitHub</a>
                 </div>
             </div>
         </>
