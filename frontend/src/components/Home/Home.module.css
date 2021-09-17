@@ -17,10 +17,11 @@
   min-height: 75px;
   max-height: 75px;
   width: 100%;
-  background-color: #fff0f2;
+  background-color: #f4f4f4;
   padding: 5px 20px;
-  border: 1px solid #fff4f6;
-  border-width: 0 0 1px;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 1rem;
+  justify-content: center;
+}
+
+.github {
+  margin-top: 1.5%;
 }
