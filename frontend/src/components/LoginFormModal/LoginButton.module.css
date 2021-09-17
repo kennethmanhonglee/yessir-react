@@ -1,8 +1,9 @@
 .loginButton {
-    color: white;
+  color: white;
 }
 
 .loginButton:hover {
-    border-bottom: 1px solid white;
-    padding-top: 3px;
+  border-bottom: 1px solid white;
+  padding-top: 3px;
+  text-underline-offset: 5px;
 }

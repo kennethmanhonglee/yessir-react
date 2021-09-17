@@ -41,7 +41,7 @@ function Navigation({ isLoaded }) {
         */}
       <li className={styles.home}>
         <NavLink to="/">
-          <div>Yessir Logo</div>
+          <div className={styles.homeDiv}>Yessir!</div>
         </NavLink>
       </li>
       <li className={styles.functionButtons}>
