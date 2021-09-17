@@ -2,7 +2,6 @@ import { FaSearch } from 'react-icons/fa'
 import { useState } from "react";
 import { useDispatch } from 'react-redux';
 
-import { searchBusinesses_thunk } from '../../store/search';
 import styles from './SearchBar.module.css'
 import { useHistory } from 'react-router-dom';
 
@@ -14,8 +13,6 @@ const SearchBar = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
-
         return history.push(`/search/${searchParamsString}=${address}`);
     }
     return (
