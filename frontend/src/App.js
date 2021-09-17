@@ -23,17 +23,8 @@ function App() {
 
   useEffect(() => {
     dispatch(sessionActions.restoreUser_thunk()).then(() => setIsLoaded(true));
-  }, [dispatch]);
-
-  useEffect(() => {
     dispatch(businessesActions.loadBusinesses_thunk());
-  }, [dispatch]);
-
-  useEffect(() => {
     dispatch(reviewsActions.loadReviews_thunk());
-  }, [dispatch]);
-
-  useEffect(() => {
     dispatch(usersActions.loadUsers_thunk());
   }, [dispatch]);
 
@@ -63,7 +54,7 @@ function App() {
           <Route path='/reviews/:reviewId/edit'>
             <EditReviewPage />
           </Route>
-          <Route path='/search'>
+          <Route exact path='/search/:searchParamsString'>
             <SearchPage />
           </Route>
           <Route path='/'>
