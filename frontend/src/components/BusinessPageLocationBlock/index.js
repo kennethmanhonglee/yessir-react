@@ -10,14 +10,14 @@ const BusinessPageLocationBlock = () => {
     <div className={styles.locationBlock}>
       <h2 className={styles.header}>Location</h2>
       {currentBusiness && (
-        <>
+        <div>
           <p
             className={styles.address}
           >{`${currentBusiness.address}, ${currentBusiness.city}`}</p>
           <p
             className={styles.address}
           >{`${currentBusiness.state} ${currentBusiness.zipCode}`}</p>
-        </>
+        </div>
       )}
     </div>
   );
