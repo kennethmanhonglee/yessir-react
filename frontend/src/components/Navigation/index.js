@@ -33,7 +33,7 @@ function Navigation({ isLoaded }) {
                     <NavLink to="/review-page">Write a Review</NavLink>
                     create a page to suggest businesses for user to write reviews for
                 </li>
-        */}
+            */}
             < li className={styles.home} >
                 <NavLink to='/'><div>Yessir Logo</div></NavLink>
             </li >

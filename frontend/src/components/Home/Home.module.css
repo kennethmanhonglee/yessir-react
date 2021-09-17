@@ -1,10 +1,26 @@
 .main {
-    height: 70vh;
-    width: 100%;
-    border: 1px solid black; /* for debugging*/
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: beige; /*placeholder - change to random image*/
+  height: 70vh;
+  width: 100%;
+  border: 1px solid black; /* for debugging*/
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: beige; /*placeholder - change to random image*/
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  box-sizing: border-box;
+  display: flex;
+  min-height: 75px;
+  max-height: 75px;
+  width: 100%;
+  background-color: #fff0f2;
+  padding: 5px 20px;
+  border: 1px solid #fff4f6;
+  border-width: 0 0 1px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;
 }
