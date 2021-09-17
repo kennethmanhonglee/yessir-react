@@ -7,7 +7,7 @@ const cookieParser = require('cookie-parser');
 const { ValidationError } = require('sequelize');
 
 // routes
-const routes = require('./routes'); //for debugging
+const routes = require('./routes');
 const apiRouter = require('./routes/api/index');
 
 // checks environment

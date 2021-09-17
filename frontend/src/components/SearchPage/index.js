@@ -20,7 +20,6 @@ const SearchPage = () => {
             searchParamsString: paramsArray[0],
             address: paramsArray[1]
         }
-        console.log('i am use effect')
         dispatch(searchBusinesses_thunk(params));
     }, []);
 
