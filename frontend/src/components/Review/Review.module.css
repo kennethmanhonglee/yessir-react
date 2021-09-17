@@ -1,5 +1,22 @@
 .review {
-  border: 1px solid black;
+  border: 1px solid rgba(0, 0, 0, 0.3);
   margin: 10px 3%;
+  padding: 1.5%;
 }
 
+.username {
+  font-size: 1.3rem;
+  display: inline-block;
+  font-weight: 500;
+}
+
+.rating,
+.date {
+  display: inline-block;
+  color: rgba(0, 0, 0, 0.3);
+  margin-left: 1%;
+}
+
+.content {
+  margin-left: 3%;
+}
