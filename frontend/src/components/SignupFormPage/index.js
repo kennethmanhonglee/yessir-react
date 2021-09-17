@@ -33,6 +33,15 @@ function SignupFormPage() {
         return setErrors(['Confirm Password field must be the same as the Password field']);
     };
 
+    const demoUser = () => {
+        setErrors([]);
+        return dispatch(sessionActions.login_thunk({ credential: 'Demo-lition', password: 'password' }))
+            .catch(async (res) => {
+                const data = await res.json();
+                if (data && data.errors) setErrors(data.errors);
+            });
+    }
+
     return (
         <div className={styles.formDiv}>
             <h2 className={styles.header}>Sign up for Yessir!</h2>
@@ -87,6 +96,7 @@ function SignupFormPage() {
                     }
                 </div>
             </form >
+            <button className={styles.demo} onClick={demoUser}>Demo User</button>
 
             <div>
             </div>
