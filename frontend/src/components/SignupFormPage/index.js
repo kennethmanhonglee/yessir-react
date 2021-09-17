@@ -62,6 +62,7 @@ function SignupFormPage() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
+                    className={styles.input}
                 />
                 <input
                     placeholder='Username'
@@ -69,6 +70,7 @@ function SignupFormPage() {
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                     required
+                    className={styles.input}
                 />
                 <input
                     placeholder='Password'
@@ -76,6 +78,7 @@ function SignupFormPage() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
+                    className={styles.input}
                 />
                 <input
                     placeholder='Confirm Password'
@@ -83,6 +86,7 @@ function SignupFormPage() {
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     required
+                    className={styles.input}
                 />
                 <button className={styles.submitButton} type="submit">Sign Up</button>
                 <div className={styles.loginDiv}>
@@ -97,9 +101,6 @@ function SignupFormPage() {
                 </div>
             </form >
             <button className={styles.demo} onClick={demoUser}>Demo User</button>
-
-            <div>
-            </div>
         </div >
     );
 }
