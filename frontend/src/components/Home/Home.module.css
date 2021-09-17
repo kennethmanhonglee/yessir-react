@@ -14,8 +14,7 @@
   bottom: 0;
   box-sizing: border-box;
   display: flex;
-  min-height: 75px;
-  max-height: 75px;
+  height: 45px;
   width: 100%;
   background-color: #f4f4f4;
   padding: 5px 20px;
@@ -23,5 +22,5 @@
 }
 
 .github {
-  margin-top: 1.5%;
+  margin-top: 0.5%;
 }

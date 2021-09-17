@@ -1,59 +1,63 @@
 nav {
-    list-style-type: none;
-    display: flex;
-    justify-content: space-between;
-    height: 45px;
-    border-bottom: 1px solid rgba(0,0,0,0.2);
-    background-color: #d32323;
-    color: white;
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+  height: 45px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  background-color: #d32323;
+  color: white;
 }
 
-.reviewBusinesses, .loginSignup, .home, .functionButtons {
-    height: 45px;
-    display: flex;
-    align-items: center;
+.reviewBusinesses,
+.loginSignup,
+.home,
+.functionButtons {
+  height: 45px;
+  display: flex;
+  align-items: center;
 }
 
 .loginSignup {
-    margin-right: 20px;
-    color: white;
+  margin-right: 20px;
+  color: white;
 }
 
 .reviewBusinesses {
-    position: absolute;
-    left: 2%;
+  position: absolute;
+  left: 2%;
 }
 
 .signup {
-    margin-left: 20px;
+  margin-left: 20px;
 }
 
 .signup:hover {
-    text-decoration: none;
-    background-color: rgb(255, 109, 109);;
+  text-decoration: none;
+  background-color: rgb(255, 109, 109);
 }
 
-button, NavLink {
-    font-size: 1rem;
+button,
+NavLink {
+  font-size: 1rem;
 }
 
 .signup {
-    padding: 5px;
-    border: 1px solid red;
-    border-radius: 10%;
+  padding: 5px;
+  border: 1px solid red;
+  border-radius: 10%;
 }
 
 .createBusiness {
-    margin-right: 70px;
+  margin-right: 70px;
 }
 
 .functionButtons {
-    position: absolute;
-    right: 0;
-    display: flex;
+  position: absolute;
+  right: 0;
+  display: flex;
 }
 
 .home {
-    position: relative;
-    margin: 0 auto;
+  position: relative;
+  margin: 0 auto;
 }
