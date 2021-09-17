@@ -18,8 +18,6 @@ const ContentBlock = () => {
         const payload = { business, user };
         const deleteMessage = await dispatch(deleteBusiness_thunk(payload));
 
-        console.log(deleteMessage);
-
         return history.push('/');
     }
 
