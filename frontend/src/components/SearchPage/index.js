@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
+import { NavLink } from "react-router-dom";
 
 import styles from "./SearchPage.module.css";
 import { searchBusinesses_thunk } from "../../store/search";
-import { Link } from "react-router-dom";
 
 const SearchPage = () => {
   const { searchParamsString } = useParams();
@@ -29,13 +29,21 @@ const SearchPage = () => {
   } else {
     return (
       <div className={styles.businessList}>
+        <div className={styles.headerDiv}>
+          <h2 className={styles.header}>All Results</h2>
+        </div>
         {businessList?.map((business) => (
-          <div className={styles.business} key={business.id}>
-            <Link to={`/businesses/${business.id}`}>
-              <h2>{business.title}</h2>
-              <p>{business.description}</p>
-              <p>{`${business.address}, ${business.city}, ${business.state} ${business.zipCode}`}</p>
-            </Link>
+          <div key={business.id} className={styles.business}>
+            <NavLink
+              className={styles.businessLink}
+              to={`/businesses/${business.id}`}
+            >
+              <h2 className={styles.title}>{business.title}</h2>
+              <p className={styles.description}>{business.description}</p>
+              <p
+                className={styles.address}
+              >{`${business.address}, ${business.city}, ${business.state} ${business.zipCode}`}</p>
+            </NavLink>
           </div>
         ))}
       </div>
