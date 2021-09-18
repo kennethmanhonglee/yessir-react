@@ -3,20 +3,57 @@
   width: 100%;
 }
 
-.reviewForm {
-  padding: 30px;
+.form {
+  margin-top: 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
-/* debug */
-/* h2 {
-    margin-bottom: 30px;
-    font-weight: 900;
-} */
+.selectDiv {
+  height: 5vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.selectLabel {
+  margin-right: 20%;
+}
+
+.select {
+  box-sizing: border-box;
+  height: 3vh;
+  width: 5vw;
+  font-size: 1rem;
+  text-align: center;
+}
 
 textarea {
-  height: 80vh;
-  width: 80%;
+  height: 60vh;
+  max-height: 60vh;
+  min-height: 60vh;
+  width: 60vw;
+  max-width: 60vw;
+  min-width: 60vw;
   font-family: Arial, Helvetica, sans-serif;
-  line-height: 20px;
-  padding: 10px;
+  line-height: 10%;
+  padding: 20px 10px;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+}
+
+.button {
+  background-color: rgb(255, 109, 109);
+  width: 15vw;
+  border-radius: 3px;
+  align-self: center;
+  margin: 20px 0;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: red;
 }
