@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { BsStarFill } from "react-icons/bs";
 
 import { deleteReview_thunk } from "../../store/reviews";
 import styles from "./Review.module.css";
