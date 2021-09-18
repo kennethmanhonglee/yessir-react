@@ -1,5 +1,41 @@
 .review {
-  border: 1px solid black;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
   margin: 10px 3%;
+  padding: 1.5%;
 }
 
+.username {
+  font-size: 1.3rem;
+  display: inline-block;
+  font-weight: 500;
+}
+
+.rating,
+.date {
+  display: inline-block;
+  color: rgba(0, 0, 0, 0.3);
+  margin-left: 1%;
+}
+
+.content {
+  margin-left: 2%;
+  font-size: 1.1rem;
+}
+
+.editReviewButton,
+.deleteReviewButton {
+  box-sizing: border-box;
+  padding: 5px;
+  margin-left: 40px;
+  /* border: 1px solid blue; */
+  background-color: rgb(255, 109, 109);
+  color: white;
+  font-weight: 900;
+  border-radius: 5%;
+}
+
+.editReviewButton:hover,
+.deleteReviewButton:hover {
+  background-color: red;
+}

@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+
 import { deleteReview_thunk } from "../../store/reviews";
 import styles from "./Review.module.css";
 
@@ -18,7 +19,7 @@ const Review = ({ review }) => {
       {users[review.userId] && (
         <>
           <h2 className={styles.username}>{users[review.userId].username}</h2>
-          <h4 className={styles.rating}>{review.rating}</h4>{" "}
+          <h4 className={styles.rating}>{review.rating} stars</h4>{" "}
           {/*change to stars graphics*/}
           <p className={styles.date}>{updatedAt.toDateString()}</p>
           <p className={styles.content}>{review.content}</p>

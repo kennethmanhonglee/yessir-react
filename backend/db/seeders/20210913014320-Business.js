@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 const faker = require("faker");
 
@@ -24,15 +24,21 @@ module.exports = {
       let city = faker.address.city();
       let state = faker.address.state();
       let zipCode = faker.address.zipCode();
-      let latitude = faker.address.latitude();
-      let longitude = faker.address.longitude();
 
-      let newBusiness = { ownerId, title, description, address, city, state, zipCode, latitude, longitude };
+      let newBusiness = {
+        ownerId,
+        title,
+        description,
+        address,
+        city,
+        state,
+        zipCode,
+      };
 
       fakerBusinessesArrays.push(newBusiness);
     }
 
-    return queryInterface.bulkInsert('Businesses', fakerBusinessesArrays);
+    return queryInterface.bulkInsert("Businesses", fakerBusinessesArrays);
   },
 
   down: (queryInterface, Sequelize) => {
@@ -43,6 +49,10 @@ module.exports = {
       Example:
       return queryInterface.bulkDelete('People', null, {});
     */
-    return queryInterface.bulkDelete('Businesses', null, { truncate: true, cascade: true, restartIdentity: true });
-  }
+    return queryInterface.bulkDelete("Businesses", null, {
+      truncate: true,
+      cascade: true,
+      restartIdentity: true,
+    });
+  },
 };
