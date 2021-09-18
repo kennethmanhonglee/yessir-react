@@ -34,3 +34,17 @@
 .business:hover {
   box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.3);
 }
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.description {
+  margin: 2%;
+}
+
+.address {
+  font-size: 0.9rem;
+  color: rgba(0, 0, 0, 0.8);
+}

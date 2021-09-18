@@ -39,10 +39,10 @@ const SearchPage = () => {
               to={`/businesses/${business.id}`}
             >
               <h2 className={styles.title}>{business.title}</h2>
-              <p className={styles.description}>{business.description}</p>
               <p
                 className={styles.address}
-              >{`${business.address}, ${business.city}, ${business.state} ${business.zipCode}`}</p>
+              >{`${business.city}, ${business.state}`}</p>
+              <p className={styles.description}>{business.description}</p>
             </NavLink>
           </div>
         ))}
