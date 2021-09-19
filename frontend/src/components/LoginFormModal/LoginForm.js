@@ -9,15 +9,23 @@ function LoginForm() {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors([]);
-    return dispatch(sessionActions.login_thunk({ credential, password })).catch(
-      async (res) => {
-        const data = await res.json();
-        if (data && data.errors) setErrors(data.errors);
-      }
+    const result = await dispatch(
+      sessionActions.login_thunk({ credential, password })
     );
+
+    if (result.error) {
+      setErrors(result.errors.err.errors);
+    }
+
+    // (
+    //   async (res) => {
+    //     const data = await res.json();
+    //     if (data && data.errors) setErrors(data.errors);
+    //   }
+    // );
   };
 
   const demoUser = () => {
