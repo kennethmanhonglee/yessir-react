@@ -56,9 +56,18 @@ export const signup_thunk = (user) => async (dispatch) => {
       password,
     }),
   });
-  const data = await response.json();
-  dispatch(setUser_actionCreator(data.user));
-  return response;
+  const result = await response.json();
+  if (response.ok) {
+    dispatch(setUser_actionCreator(result.user));
+    return response;
+  } else {
+    const { errors } = result;
+
+    const errorsMsg = errors.map((error) => error.msg);
+    return {
+      errorsMsg,
+    };
+  }
 };
 
 export const logout_thunk = () => async (dispatch) => {

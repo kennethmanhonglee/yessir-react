@@ -28,10 +28,7 @@ function LoginForm() {
         credential: "Demo-lition",
         password: "password",
       })
-    ).catch(async (res) => {
-      const data = await res.json();
-      if (data && data.errors) setErrors(data.errors);
-    });
+    );
   };
 
   return (
