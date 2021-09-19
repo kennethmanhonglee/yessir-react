@@ -1,76 +1,41 @@
+# Yessir!
 
-# Create React App Template
+Yessir! is a single-page Yelp clone which mimicks some of Yelp's functionalities, allowing users to search for businesses, leave a review for businesses, and to create a business page where others can interact with it.
 
-A no-frills template from which to create React applications with
-[Create React App](https://github.com/facebook/create-react-app).
+## Live site
 
-```sh
-npx create-react-app my-app --template @appacademy/simple --use-npm
-```
+https://yessir-react.herokuapp.com/
 
-## Available Scripts
+## Technologies used
 
-In the project directory, you can run:
+- ### Frontend
+  - HTML,CSS,Javascript, React, Redux
+- ### Backend
+  - Express, Sequelize, PostgreSQL
 
-### `npm start`
+## Screenshots
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Home page
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+![Home Page](https://user-images.githubusercontent.com/54250710/133942899-f2317f40-1d13-4bf4-be1a-9e21510e550e.png)
 
-### `npm test`
+### Signup Page
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![Signup Page](https://user-images.githubusercontent.com/54250710/133942936-342c104d-ff6c-4aca-a041-b989d13ac037.png)
 
-### `npm run build`
+### Search Page
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![Search Page](https://user-images.githubusercontent.com/54250710/133942977-334daddb-4e51-42d1-9392-28c8ec7449a9.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Features
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Users are able to search for a business either by their title, or the location of the business (street address, city, state, or zip code.) Once they find it, they are also able to read reviews of that business left by other users, or login/signup for an account and leave a review of their own.
 
-### `npm run eject`
+## Challenges
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Working on a solo project
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+  - As this is the first time I worked on a solo project, time management was definitely one of the biggest change compared to the previous group projects I worked on. One of the most important lessons I learned from this project is using a scrum board to keep track of my tasks and making sure that I am not too off track from the current task. Especially in the beginning of a project, it is easy to stray off of the current task as there are many things that need to be worked on, but using a scrum board or todo list really helped me stay focused and manage my time well.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Search Feature
+  - Implementing the search feature was one of the greater technical challenges I had to face during this project. I had implemented a search using the Sequelize `Op.iLike` where operator as one of the backend API routes. However, where to make the fetch request to this route was difficult since I had originally tried to make this request in the search bar component, which would then redirect the user to a search page. I was not able to pass in the list of businesses from the search bar to the search page as they are different routes inside of the React Router Dom package. I consulted a few of my colleagues, and one of them reminded me that conventionally, developers would first redirect the user, then make the fetch request at the new search page so that react component would have access to the list of businesses returned from the backend API route. 
