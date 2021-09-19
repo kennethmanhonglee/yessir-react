@@ -17,10 +17,12 @@
   width: 100%;
 }
 
-.form ul {
+.errors {
   color: red;
   list-style-type: none;
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .label {

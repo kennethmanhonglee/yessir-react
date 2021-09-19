@@ -5,8 +5,14 @@
 
 .errors {
   color: red;
-  margin: 40px 200px;
   list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.errors li {
+  padding: 5px 0;
 }
 
 .input:focus {

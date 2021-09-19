@@ -28,10 +28,11 @@ function SignupFormPage() {
         sessionActions.signup_thunk({ email, username, password })
       );
       if (result.errorsMsg) setErrors(result.errorsMsg);
+      return;
     }
-    // return setErrors([
-    //   "Confirm Password field must be the same as the Password field",
-    // ]);
+    return setErrors([
+      "Confirm Password field must be the same as the Password field.",
+    ]);
   };
 
   const demoUser = () => {
