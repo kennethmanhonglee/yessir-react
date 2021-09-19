@@ -17,6 +17,14 @@
   width: 100%;
 }
 
+.errors {
+  color: red;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .label {
   display: flex;
 }
