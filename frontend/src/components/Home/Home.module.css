@@ -34,7 +34,13 @@
 }
 
 .header {
-  margin: 50px;
+  height: 150px;
+  width: 320px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  margin-bottom: 20px;
 }
 
 .test {

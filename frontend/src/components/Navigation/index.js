@@ -3,8 +3,8 @@ import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import ProfileButton from "./ProfileButton";
-import LoginFormModal from "../LoginFormModal";
 import styles from "./Navigation.module.css";
+import logo from "../../assets/images/logo.png";
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
@@ -43,7 +43,12 @@ function Navigation({ isLoaded }) {
         */}
       <li className={styles.home}>
         <NavLink to="/">
-          <div className={styles.homeDiv}>Yessir!</div>
+          <div
+            className={styles.homeDiv}
+            style={{
+              backgroundImage: `url(${logo})`,
+            }}
+          ></div>
         </NavLink>
       </li>
       <li className={styles.functionButtons}>

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import styles from "./Home.module.css";
 import SearchBar from "../SearchBar";
 import food_pics from "../../assets/food_pics";
+import logo from "../../assets/images/logo.png";
 
 const Home = () => {
   const random_ind = Math.floor(Math.random() * 242); //242 is length of food_pics seed array
@@ -15,11 +16,12 @@ const Home = () => {
         }}
       >
         <div className={styles.linkIcon}>
-          <Link to="/">
-            <div className={styles.header}>
-              <h1>Yessir!</h1>
-            </div>
-          </Link>
+          <div
+            className={styles.header}
+            style={{
+              backgroundImage: `url(${logo})`,
+            }}
+          ></div>
         </div>
         <SearchBar />
       </div>
