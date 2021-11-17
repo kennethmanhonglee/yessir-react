@@ -36,7 +36,7 @@ function LoginForm() {
   return (
     <div className={styles.page_container}>
       <div className={styles.formDiv}>
-        <h1>Welcome back.</h1>
+        <h1>Log in to Yessir</h1>
         <form onSubmit={handleSubmit} className={styles.form}>
           <ul className={styles.errors}>
             {errors.map((error, idx) => (
@@ -63,9 +63,9 @@ function LoginForm() {
             Log In
           </button>
         </form>
-        <button className={styles.button} onClick={demoUser}>
+        <div className={styles.button} onClick={demoUser}>
           Demo User
-        </button>
+        </div>
       </div>
       <div
         className={styles.login_picture}
