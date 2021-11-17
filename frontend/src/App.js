@@ -16,7 +16,7 @@ import * as usersActions from "./store/users";
 import EditBusinessPage from "./components/EditBusinessPage";
 import EditReviewPage from "./components/EditReviewPage";
 import SearchPage from "./components/SearchPage";
-import LoginForm from "./components/LoginFormModal/LoginForm";
+import LoginForm from "./components/LoginForm";
 
 function App() {
   const dispatch = useDispatch();
