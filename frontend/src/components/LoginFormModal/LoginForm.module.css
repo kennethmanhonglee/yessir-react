@@ -1,10 +1,26 @@
+.page_container {
+  height: 90vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login_picture {
+  height: 342px;
+  width: 382px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .formDiv {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 60vh;
-  width: 60vw;
+  /* height: 60vh;
+  width: 60vw; */
   background-color: rgb(247, 247, 245);
 }
 
