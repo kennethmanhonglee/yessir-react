@@ -2,11 +2,18 @@ import { Link } from "react-router-dom";
 
 import styles from "./Home.module.css";
 import SearchBar from "../SearchBar";
+import food_pics from "../../assets/food_pics";
 
 const Home = () => {
+  const random_ind = Math.floor(Math.random() * 242); //242 is length of food_pics seed array
   return (
     <>
-      <div className={styles.main}>
+      <div
+        className={styles.main}
+        style={{
+          backgroundImage: `url(${food_pics[random_ind]})`,
+        }}
+      >
         <div className={styles.linkIcon}>
           <Link to="/">
             <div className={styles.header}>
@@ -14,7 +21,6 @@ const Home = () => {
             </div>
           </Link>
         </div>
-        {/* make into one component */}
         <SearchBar />
       </div>
       <div className={styles.footer}>
