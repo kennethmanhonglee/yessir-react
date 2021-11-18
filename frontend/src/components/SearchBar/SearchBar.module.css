@@ -12,6 +12,7 @@
   background-color: white;
   border-radius: 3px;
   height: 40px;
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);
 }
 
 .searchInput {
@@ -19,6 +20,11 @@
   outline: none;
   line-height: 35px;
   font-size: 1rem;
+  background-color: white;
+}
+
+.searchInput:focus {
+  background-color: whitesmoke;
 }
 
 .searchButton {

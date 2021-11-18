@@ -203,8 +203,6 @@ const food_pics = [
   "https://images.unsplash.com/photo-1490818387583-1baba5e638af?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
   "https://images.unsplash.com/photo-1557800636-894a64c1696f?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
   "https://images.unsplash.com/photo-1550710901-459a4a16d4a8?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
-  "https://images.unsplash.com/photo-1611034540811-17eaf47ff266?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
-  "https://images.unsplash.com/photo-1611034540811-17eaf47ff266?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
   "https://images.unsplash.com/photo-1614173188975-b77298c35fea?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
   "https://images.unsplash.com/photo-1609873539099-ad08ff472f65?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
   "https://images.unsplash.com/photo-1569259201959-59e0132b2569?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max",
