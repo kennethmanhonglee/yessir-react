@@ -11,12 +11,12 @@ function Navigation({ isLoaded }) {
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
-      <>
+      <div className={styles.logged_in_buttons}>
         <NavLink className={styles.createBusiness} to="/businesses/create">
           Create a Business
         </NavLink>
         <ProfileButton user={sessionUser} />
-      </>
+      </div>
     );
   } else {
     sessionLinks = (
