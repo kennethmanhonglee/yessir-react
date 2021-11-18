@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 import login_pic from "../../assets/images/signup_illustration.png";
 import * as sessionActions from "../../store/session";
@@ -7,6 +8,7 @@ import styles from "./LoginForm.module.css";
 
 function LoginForm() {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
@@ -20,17 +22,20 @@ function LoginForm() {
 
     if (result.error) {
       setErrors(result.errors.err.errors);
+    } else {
+      history.push("/");
     }
   };
 
-  const demoUser = () => {
+  const demoUser = async () => {
     setErrors([]);
-    return dispatch(
+    await dispatch(
       sessionActions.login_thunk({
         credential: "Demo-lition",
         password: "password",
       })
     );
+    history.push("/");
   };
 
   return (
