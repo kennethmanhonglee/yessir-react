@@ -15,15 +15,17 @@ const Home = () => {
           backgroundImage: `url(${food_pics[random_ind]})`,
         }}
       >
-        <div className={styles.linkIcon}>
-          <div
-            className={styles.header}
-            style={{
-              backgroundImage: `url(${logo})`,
-            }}
-          ></div>
+        <div className={styles.main_foreground}>
+          <div className={styles.linkIcon}>
+            <div
+              className={styles.header}
+              style={{
+                backgroundImage: `url(${logo})`,
+              }}
+            ></div>
+          </div>
+          <SearchBar />
         </div>
-        <SearchBar />
       </div>
       <div className={styles.footer}>
         <div className={styles.github}>
