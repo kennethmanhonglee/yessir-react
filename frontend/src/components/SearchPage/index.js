@@ -33,18 +33,19 @@ const SearchPage = () => {
           <h2 className={styles.header}>All Results</h2>
         </div>
         {businessList?.map((business) => (
-          <div key={business.id} className={styles.business}>
-            <NavLink
-              className={styles.businessLink}
-              to={`/businesses/${business.id}`}
-            >
+          <NavLink
+            className={styles.businessLink}
+            to={`/businesses/${business.id}`}
+            key={business.id}
+          >
+            <div className={styles.business}>
               <h2 className={styles.title}>{business.title}</h2>
               <p
                 className={styles.address}
               >{`${business.city}, ${business.state}`}</p>
               <p className={styles.description}>{business.description}</p>
-            </NavLink>
-          </div>
+            </div>
+          </NavLink>
         ))}
       </div>
     );
