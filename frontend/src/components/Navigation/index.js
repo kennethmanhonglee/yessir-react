@@ -3,25 +3,28 @@ import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import ProfileButton from "./ProfileButton";
-import LoginFormModal from "../LoginFormModal";
 import styles from "./Navigation.module.css";
+import logo from "../../assets/images/logo.png";
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
-      <>
+      <div className={styles.logged_in_buttons}>
         <NavLink className={styles.createBusiness} to="/businesses/create">
           Create a Business
         </NavLink>
         <ProfileButton user={sessionUser} />
-      </>
+      </div>
     );
   } else {
     sessionLinks = (
       <div className={styles.loginSignup}>
-        <LoginFormModal />
+        {/* <LoginFormModal /> */}
+        <NavLink className={styles.signup} to="/login">
+          Login
+        </NavLink>
         <NavLink className={styles.signup} to="/signup">
           Sign Up
         </NavLink>
@@ -40,7 +43,12 @@ function Navigation({ isLoaded }) {
         */}
       <li className={styles.home}>
         <NavLink to="/">
-          <div className={styles.homeDiv}>Yessir!</div>
+          <div
+            className={styles.homeDiv}
+            style={{
+              backgroundImage: `url(${logo})`,
+            }}
+          ></div>
         </NavLink>
       </li>
       <li className={styles.functionButtons}>

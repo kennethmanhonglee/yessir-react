@@ -1,21 +1,29 @@
-import { Link } from "react-router-dom";
-
 import styles from "./Home.module.css";
 import SearchBar from "../SearchBar";
+import food_pics from "../../assets/food_pics";
+import logo from "../../assets/images/logo.png";
 
 const Home = () => {
+  const random_ind = Math.floor(Math.random() * 242); //242 is length of food_pics seed array
   return (
     <>
-      <div className={styles.main}>
-        <div className={styles.linkIcon}>
-          <Link to="/">
-            <div className={styles.header}>
-              <h1>Yessir!</h1>
-            </div>
-          </Link>
+      <div
+        className={styles.main}
+        style={{
+          backgroundImage: `url(${food_pics[random_ind]})`,
+        }}
+      >
+        <div className={styles.main_foreground}>
+          <div className={styles.linkIcon}>
+            <div
+              className={styles.header}
+              style={{
+                backgroundImage: `url(${logo})`,
+              }}
+            ></div>
+          </div>
+          <SearchBar />
         </div>
-        {/* make into one component */}
-        <SearchBar />
       </div>
       <div className={styles.footer}>
         <div className={styles.github}>

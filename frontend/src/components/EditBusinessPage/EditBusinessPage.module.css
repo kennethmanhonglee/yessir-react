@@ -29,8 +29,13 @@
   align-self: center;
   margin: 20px 0;
   cursor: pointer;
+  padding: 5px 10px;
+  background-color: #d32323;
+  transition: background-color 200ms;
+  color: white;
+  font-weight: 500;
 }
 
 .button:hover {
-  background-color: red;
+  background-color: #dc4f4f;
 }

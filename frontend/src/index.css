@@ -42,6 +42,10 @@ nav {
   font-weight: normal;
 }
 
+body {
+  background-color: rgb(247, 247, 245);
+}
+
 h1 {
   font-size: 2rem;
 }

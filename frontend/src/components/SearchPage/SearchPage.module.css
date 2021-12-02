@@ -19,6 +19,7 @@
 .businessLink {
   width: 60vw;
   height: 20vh;
+  margin: 10px 20px;
 }
 
 .business {
@@ -27,7 +28,6 @@
   padding: 2%;
   height: 20vh;
   width: 60vw;
-  margin: 10px 20px;
   transition: box-shadow 0.3s;
 }
 

@@ -10,8 +10,9 @@
   justify-content: space-around;
   align-items: center;
   background-color: white;
-  border-radius: 3px;
+  border-radius: 5px;
   height: 40px;
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5);
 }
 
 .searchInput {
@@ -19,14 +20,25 @@
   outline: none;
   line-height: 35px;
   font-size: 1rem;
+  background-color: white;
+  transition: background-color 200ms;
+}
+
+.searchInput:focus {
+  background-color: whitesmoke;
 }
 
 .searchButton {
   background-color: #d32323;
   height: 40px;
   width: 60px;
-  border-radius: 10%;
+  border-radius: 0 5px 5px 0;
   position: relative;
+  transition: background-color 200ms;
+}
+.searchButton:hover {
+  cursor: pointer;
+  background-color: #dc4f4f;
 }
 
 .searchParams {
